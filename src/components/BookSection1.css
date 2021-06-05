@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box
+  }
+
+    
+.nav1{
+    background-color:black;   
+    
+    height: 100%; /* 100% Full-height */
+     /*width: 0; 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 0; /* Stay on top */
+    top: 55px; /* Stay at the top */
+    left: 0;
+      
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s;
+}
+
+.CarouselHome{
+    margin-left:500px;
+}
+.footerpage{
+    position: fixed;
+    bottom: 0px;
+    width: 1500%;
+}
+.childNavdiv{
+  display: none;
+}

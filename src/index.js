@@ -6,7 +6,7 @@ import LoginButton from './components/LoginButton.js';
 import LogoutButton from './components/LogoutButton.js';
 import Profile from './components/Profile.js';
 import MyFavoriteBooks from './myFavoriteBooks'
-import Login from './Login'
+import FirstPage from './FirstPage'
 
 ReactDOM.render(
   <Auth0Provider

@@ -9,9 +9,11 @@ import {
   Route
 } from "react-router-dom";
 import MyFavoriteBooks from './myFavoriteBooks'
-import Login from './Login'
+import FirstPage from './FirstPage';
 import Profile from './components/Profile.js';
 import BookFormModal from './components/BookFormModal.js'
+import BookSection from './components/BookSection';
+import NavWebsite from './components/NavWebsite'
 
 
 
@@ -29,16 +31,20 @@ class App extends React.Component {
 
     return(
       <>
+       
         <Router>
           {/* <IsLoadingAndError> */}
             <Header />
+            
               <Switch>
-                <Route exact path="/">
-                {! this.props.auth0.isAuthenticated ? <Login/> : <MyFavoriteBooks/>} 
+               <Route exact path="/">
+                {/* {! this.props.auth0.isAuthenticated ? <firstPage/> : <firstPage/>}  */}
+                <FirstPage/>
                 </Route>
-                <Route exact path="/profile">
-                {this.props.auth0.isAuthenticated ? <Profile/>  : <Login/>} 
-                </Route>
+                {/* <Route exact path="/profile">
+                {this.props.auth0.isAuthenticated ? <Profile/>  : <firstPage/>} 
+                </Route> */}
+                
                 {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
               </Switch>
             <Footer />
