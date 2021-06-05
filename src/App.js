@@ -17,7 +17,6 @@ import NavWebsite from './components/NavWebsite'
 
 
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
