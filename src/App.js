@@ -15,8 +15,6 @@ import BookFormModal from './components/BookFormModal.js'
 import BookSection from './components/BookSection';
 import NavWebsite from './components/NavWebsite'
 
-
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -41,8 +39,8 @@ class App extends React.Component {
               <FirstPage />
             </Route>
             <Route exact path="/Info">
-                {this.props.auth0.isAuthenticated ? <Info/>  : <firstPage/>} 
-           </Route>
+              {this.props.auth0.isAuthenticated ? <Info /> : <firstPage />}
+            </Route>
           </Switch>
           <Footer />
           {/* </IsLoadingAndError> */}
