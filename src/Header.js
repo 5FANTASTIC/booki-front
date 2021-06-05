@@ -7,7 +7,7 @@ import { withAuth0 } from '@auth0/auth0-react';
 
 import LogoutButton from './components/LogoutButton'
 import LoginButton from './components/LoginButton'
-import Profile from './components/Profile';
+import Profile from './components/Info';
 import BookSection from './components/BookSection';
 import AboutUs from './components/AboutUs'
 

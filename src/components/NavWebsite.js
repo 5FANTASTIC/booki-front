@@ -34,11 +34,11 @@ class NavWebsite extends React.Component {
             <>
                 
                     <Nav class="nav1" defaultActiveKey="/home" className="flex-column">
-                        <Nav.Link href="/home">Main</Nav.Link>
+                        <Nav.Link class="nav1Elment" href="/home">Main</Nav.Link>
                         <Nav.Link href="/home">Book Section</Nav.Link>
                         <Nav.Link  onClick={this.showNav}>Profile ᐁ</Nav.Link>
                         <div id="myDIV" style={{display:'none'}}>
-                        <Nav.Link href="/home">Info</Nav.Link>
+                        <Nav.Link href="src/components/Info.js">Info</Nav.Link>
                         <Nav.Link href="/home">My favorite book</Nav.Link>
                         </div>
                         <Nav.Link href="/home">About us</Nav.Link>
