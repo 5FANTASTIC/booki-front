@@ -43,8 +43,8 @@ class FirstPage extends React.Component {
                     height="700"
                   />
                   <Carousel.Caption>
-                   <h3 class="firstH3">BOOKI</h3>
-                   
+                    <h3 class="firstH3">BOOKI</h3>
+
                   </Carousel.Caption>
                 </Carousel.Item>
 
@@ -57,8 +57,8 @@ class FirstPage extends React.Component {
                     width="100"
                     height="700"
                   />
-                 <Carousel.Caption>
-                   <p class="firstP">A book is like a garden,<br/> carried in the pocket</p>
+                  <Carousel.Caption>
+                    <p class="firstP">A book is like a garden,<br /> carried in the pocket</p>
                   </Carousel.Caption>
                 </Carousel.Item>
 
@@ -71,8 +71,8 @@ class FirstPage extends React.Component {
                     width="100"
                     height="700"
                   />
-                   <Carousel.Caption>
-                   <p class="firstP">Books and friends should be few but good</p>
+                  <Carousel.Caption>
+                    <p class="firstP">Books and friends should be few but good</p>
                   </Carousel.Caption>
                 </Carousel.Item>
 
@@ -86,8 +86,8 @@ class FirstPage extends React.Component {
                     height="700"
                   />
                   <Carousel.Caption>
-                  
-                   <p class="firstP"style={{fontSize:'90px'}}> If a fool borrows a book cut off his hand; but cut off both hands of the fool who brings it</p>
+
+                    <p class="firstP" style={{ fontSize: '90px' }}> If a fool borrows a book cut off his hand; but cut off both hands of the fool who brings it</p>
                   </Carousel.Caption>
                 </Carousel.Item>
 
@@ -99,12 +99,12 @@ class FirstPage extends React.Component {
                     width="100"
                     height="700"
                   />
-                    <Carousel.Caption>
-                   <p class="firstP"style={{marginTop:'-1000'}}>we eat to feed our body, we  read to feed our brain</p>
+                  <Carousel.Caption>
+                    <p class="firstP" style={{ marginTop: '-1000' }}>we eat to feed our body, we  read to feed our brain</p>
                   </Carousel.Caption>
                 </Carousel.Item>
               </Carousel>
-              
+
             </div>
 
             <br></br><br></br><br></br><br></br><br></br><br></br>
@@ -146,7 +146,7 @@ class FirstPage extends React.Component {
                   <h3>More features</h3>
                   <p>You just need to join us by creating a new account so that you can get benefit from our features by having your own books in your library for an unlimited period and create notes .</p>
                 </div>
-                
+
                 <div class="box">
                   <h2><FcOk></FcOk></h2>
                   <h3>For free</h3>
