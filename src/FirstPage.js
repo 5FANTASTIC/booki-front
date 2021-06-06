@@ -12,6 +12,7 @@ import Image from 'react-bootstrap/Image';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { FcAddressBook, FcOk, FcFinePrint } from "react-icons/fc";
 
 
 class FirstPage extends React.Component {
@@ -29,93 +30,132 @@ class FirstPage extends React.Component {
 
         {/* slide Img for first page */}
         <>
-          <div class="CarouselHome">
-            <Carousel style={{ width: '100%', height:'100%' }}
-            >
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1453&q=80"
-                  alt="First slide"
-                  width="100"
-                  height="400"
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1441&q=80"
-                  alt="Third slide"
-                  width="100"
-                  height="400"
-                />
+          <body>
+            <div class="CarouselHome">
+              <Carousel style={{ width: '100%', height: '100%' }}>
 
-                <Carousel.Caption>
-                  <h3>Third slide label</h3>
-                  <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item>
-                <img
-                  className="d-block w-100"
-                  src="https://images.unsplash.com/photo-1569511166187-97eb6e387e19?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=785&q=80"
-                  alt="First slide"
-                  width="100"
-                  height="400"
-                />
-                <Carousel.Caption>
-                  <h3>First slide label</h3>
-                  <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-              </Carousel.Item>
-            </Carousel>
-
-          </div>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1453&q=80"
+                    alt="First slide"
+                    width="100"
+                    height="700"
+                  />
+                  <Carousel.Caption>
+                   <h3 class="firstH3">BOOKI</h3>
+                   
+                  </Carousel.Caption>
+                </Carousel.Item>
 
 
-          <div class="PartAboutus">
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="https://images.unsplash.com/photo-1567168544230-d5a9401299a4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                    alt="Third slide"
+                    width="100"
+                    height="700"
+                  />
+                 <Carousel.Caption>
+                   <p class="firstP">A book is like a garden,<br/> carried in the pocket</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
 
-            <Jumbotron fluid >
-              <Container>
-                <Row>
-                  <Col>
-                    <h1>Fluid jumbotron</h1>
-                    <p>
-                      This is a modified jumbotron that occupies the entire horizontal space of
-                      its parent.
-                  </p>
-                  </Col>
 
-                  <Col>
-                    <Image src="https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/4b/40/0d/4b400df2-a297-fc95-2fe8-aedca602e3e6/source/512x512bb.jpg" thumbnail />
-                  </Col> </Row>
-              </Container>
-            </Jumbotron>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="https://images.unsplash.com/photo-1569511166187-97eb6e387e19?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=785&q=80"
+                    alt="First slide"
+                    width="100"
+                    height="700"
+                  />
+                   <Carousel.Caption>
+                   <p class="firstP">Books and friends should be few but good</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
 
-          </div>
-          <section class="service">
-            <div class="services-box">
-              <div class="box">
-                <h2>01</h2>
-                <h3>Service One</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error aspernatur ut, voluptas dignissimos! Dignissimos tenetur, sunt quasi necessitatibus labore nemo possimus eos est fuga tempore corporis, culpa ipsam magni quibusdam.</p>
-              </div>
-              <div class="box">
-                <h2>02</h2>
-                <h3>Service Two</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error aspernatur ut, voluptas dignissimos! Dignissimos tenetur, sunt quasi necessitatibus labore nemo possimus eos est fuga tempore corporis, culpa ipsam magni quibusdam.</p>
-              </div>
-              <div class="box">
-                <h2>03</h2>
-                <h3>Service Three</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error aspernatur ut, voluptas dignissimos! Dignissimos tenetur, sunt quasi necessitatibus labore nemo possimus eos est fuga tempore corporis, culpa ipsam magni quibusdam.</p>
-              </div>
+
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="https://images.unsplash.com/photo-1455894127589-22f75500213a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=679&q=80"
+                    alt="First slide"
+                    width="100"
+                    height="700"
+                  />
+                  <Carousel.Caption>
+                  
+                   <p class="firstP"style={{fontSize:'90px'}}> If a fool borrows a book cut off his hand; but cut off both hands of the fool who brings it</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src="https://images.unsplash.com/photo-1556885673-252a5231cac9?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                    alt="First slide"
+                    width="100"
+                    height="700"
+                  />
+                    <Carousel.Caption>
+                   <p class="firstP"style={{marginTop:'-1000'}}>we eat to feed our body, we  read to feed our brain</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              </Carousel>
+              
+
             </div>
-          </section>
+
+            <br></br><br></br><br></br><br></br><br></br><br></br>
+            <div class="PartAboutus">
+
+              <Jumbotron fluid >
+                <Container>
+                  <Row>
+                    <Col>
+                      <h1 style={{ color: '#917524', textAlign: 'center', textShadow: '2px 4px #293b5f' }}>BOOKI</h1>
+                      <p style={{ color: '#293b5f', textAlign: 'justify', fontSize: '20px', textIndent: '20px', lineHeight: '1.8', letterSpacing: '0.5px' }}>
+                        A book is a medium for recording information in the form of writing or images.
+                        But with the advancement of technology, reading on paper has become less and less common and a new term has entered our lives, which is electronic book, also known as an e-book or eBook, is a book publication made available in digital form, consisting of text, images, or both, readable on the flat-panel display of computers or other electronic devices.
+                        Our website is your library to search about any book you need from any category, you can have your own ebooks and read them any time you need using your account.
+                        So, don't forget joining us, you are very welcome.
+                  </p>
+                    </Col>
+                    {/* https://img.pngio.com/open-old-book-transparent-png-stickpng-books-no-background-2650_1987.png */}
+
+                    <Col>
+                      <Image src="https://images.unsplash.com/photo-1529590003495-b2646e2718bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=410&q=80" thumbnail />
+                    </Col>
+                  </Row>
+                </Container>
+              </Jumbotron>
+
+            </div>
+            <br></br><br></br><br></br><br></br><br></br><br></br>
+            <section class="service">
+              <div class="services-box">
+                <div class="box">
+                  <h2><FcAddressBook></FcAddressBook></h2>
+                  <h3>Service </h3>
+                  <p>You can search about any book you need from any category, such as Engineering, Computer, Maths, etc..</p>
+                </div>
+
+                <div class="box">
+                  <h2><FcFinePrint></FcFinePrint></h2>
+                  <h3>More features</h3>
+                  <p>You just need to join us by creating a new account so that you can get benefit from our features by having your own books in your library for an unlimited period and create notes .</p>
+                </div>
+                
+                <div class="box">
+                  <h2><FcOk></FcOk></h2>
+                  <h3>For free</h3>
+                  <p>You can get a preview of any book with all categories Books on different topics for free.</p>
+                </div>
+              </div>
+            </section>
+          </body>
         </>
 
       </>
