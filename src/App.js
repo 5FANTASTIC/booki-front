@@ -17,7 +17,7 @@ import NavWebsite from './components/NavWebsite';
 import Profile from './Profile.js';
 import AboutUs from './components/AboutUs.js';
 import LoginButton from './components/LoginButton';
-import LoginProfile from './LoginProfile.js';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -33,46 +33,41 @@ class App extends React.Component {
     return (
       <>
 
-          <Header />
+          
         <Router>
           {/* <IsLoadingAndError> */}
-
+          <Header />
           <Switch>
-          <Route exact path="/">
-              {/* { this.props.auth0.isAuthenticated ? <FirstPage/> : <FirstPage/>}  */}
+          {/* <Route exact path="/">
               <FirstPage />
               
-            </Route>
-
-            <Route exact path="/FirstPage">
-              {/* { this.props.auth0.isAuthenticated ? <FirstPage/> : <FirstPage/>}  */}
-              <FirstPage />
-              
-            </Route>
-
-            {/* <Route exact path="/Info">
-              {this.props.auth0.isAuthenticated ? <Info /> : <firstPage />}
             </Route> */}
+
+            <Route exact path="/">
+              {this.props.auth0.isAuthenticated ? <FirstPage /> : <FirstPage />}
+            
+            </Route>
             <Route exact path="/BookSelected">
-              {/* {this.props.auth0.isAuthenticated ? <BookSelected /> : <FirstPage />} */}
-              {isAuthenticated &&
-                <BookSelected />}
+             <BookSelected /> 
+            
             </Route>
 
             <Route exact path='/Profile'>
+            <Profile />
               {/* {this.props.auth0.isAuthenticated ?
                 <Profile /> : <FirstPage />} */}
               {/* {!this.props.auth0.isAuthenticated ?
                 <LoginProfile /> : <Profile />} */}
-                {isAuthenticated &&
-                <Profile />}
+                {/* {isAuthenticated &&
+                <Profile />} */}
             </Route>
 
             <Route exact path='/MyFavoriteBooks'>
+            <MyFavoriteBooks />
               {/* {this.props.auth0.isAuthenticated ?
                 <Profile /> : <FirstPage />} */}
-              {!this.props.auth0.isAuthenticated ?
-                <LoginProfile /> : <MyFavoriteBooks />}
+              {/* {!this.props.auth0.isAuthenticated ?
+                <LoginProfile /> : <MyFavoriteBooks />} */}
             </Route>
 
 
