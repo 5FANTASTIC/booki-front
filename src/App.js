@@ -9,39 +9,44 @@ import {
   Route
 } from "react-router-dom";
 import MyFavoriteBooks from './myFavoriteBooks'
-import Login from './Login'
-import Profile from './components/Profile.js';
+import FirstPage from './FirstPage';
+import Info from './components/Info.js';
 import BookFormModal from './components/BookFormModal.js'
-
-
-
+import BookSelected from './components/BookSelected';
+import NavWebsite from './components/NavWebsite'
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
-    this.sate={
-      Bookdata:''
+    this.sate = {
+      Bookdata: ''
     }
   }
 
   render() {
     const { user, isAuthenticated } = this.props.auth0;
 
-    return(
+    return (
       <>
+
         <Router>
           {/* <IsLoadingAndError> */}
-            <Header />
-              <Switch>
-                <Route exact path="/">
-                {! this.props.auth0.isAuthenticated ? <Login/> : <MyFavoriteBooks/>} 
-                </Route>
-                <Route exact path="/profile">
-                {this.props.auth0.isAuthenticated ? <Profile/>  : <Login/>} 
-                </Route>
-                {/* TODO: add a route with a path of '/profile' that renders a `Profile` component */}
-              </Switch>
-            <Footer />
+          <Header />
+
+          <Switch>
+            <Route exact path="/">
+              {/* {! this.props.auth0.isAuthenticated ? <firstPage/> : <firstPage/>}  */}
+              <FirstPage />
+            </Route>
+            <Route exact path="/Info">
+              {this.props.auth0.isAuthenticated ? <Info /> : <firstPage />}
+            </Route>
+            <Route exact path="/BookSelected">
+              {this.props.auth0.isAuthenticated ? <BookSelected /> : <firstPage />}
+            </Route>
+            
+          </Switch>
+          <Footer />
           {/* </IsLoadingAndError> */}
         </Router>
       </>

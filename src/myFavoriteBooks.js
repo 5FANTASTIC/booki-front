@@ -4,112 +4,114 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import './myFavoriteBooks.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import myFavoriteBooks from './myFavoriteBooks.css'
-import BookFormModal from './components/BookFormModal.js'
-import UpdateBookForm from './components/UpdateBookForm.js'
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import myFavoriteBooks from './myFavoriteBooks.css';
+import BookFormModal from './components/BookFormModal.js';
+import UpdateBookForm from './components/UpdateBookForm.js';
+import Table from 'react-bootstrap/Table';
+
 
 
 class MyFavoriteBooks extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
 
-    this.state={
-      bookData:[],
-      show:false,
-      showAddModel:false,
-      imageURL:'',
-      bookName:'',
-      description:'',
-      updateFormShow:false,
-      index:0,
-      valuesBeforeUpdateArray:[],
+    this.state = {
+      bookData: [],
+      show: false,
+      showAddModel: false,
+      imageURL: '',
+      bookName: '',
+      description: '',
+      updateFormShow: false,
+      index: 0,
+      valuesBeforeUpdateArray: [],
 
     }
 
   }
 
-  
-  componentDidMount=async()=>{
-    try{
-      let email=this.props.auth0.user.email
-      let PORT=process.env.REACT_APP_PORT
-      let locally='http://localhost:3020'
-      let URL=`${PORT}/books?email=${email}`
-      let data= await axios.get(URL);
-      if (data.data.length>0){
+
+  componentDidMount = async () => {
+    try {
+      let email = this.props.auth0.user.email
+      let PORT = process.env.REACT_APP_PORT
+      let locally = 'http://localhost:3020'
+      let URL = `${PORT}/books?email=${email}`
+      let data = await axios.get(URL);
+      if (data.data.length > 0) {
         this.setState({
-          bookData:data.data,
-          show:true
-        })  
+          bookData: data.data,
+          show: true
+        })
       }
-    }catch{
+    } catch {
       this.setState({
-        show:false
+        show: false
       })
     }
   }
   // lab 013 functions forms+add Data to dataBase 
   // present the form 
-  addform=e=>{
+  addform = e => {
     e.preventDefault();
 
     this.setState({
-      showAddModel:true,
+      showAddModel: true,
     })
-    console.log('showAddModel',this.state.showAddModel)
+    console.log('showAddModel', this.state.showAddModel)
 
   }
   // send to Backend to add the new data 
-  addToDataBase=async(event)=>{
+  addToDataBase = async (event) => {
     event.preventDefault();
-    let email=this.props.auth0.user.email
-    let PORT=process.env.REACT_APP_PORT
-    let locally='http://localhost:3020'
-    let URL=`${PORT}/addBook`
+    let email = this.props.auth0.user.email
+    let PORT = process.env.REACT_APP_PORT
+    let locally = 'http://localhost:3020'
+    let URL = `${PORT}/addBook`
 
-    const formData={
-      email:this.props.auth0.user.email,
-      imageURL:this.state.imageURL,
-      bookName:this.state.bookName,
-      description:this.state.description,
+    const formData = {
+      email: this.props.auth0.user.email,
+      imageURL: this.state.imageURL,
+      bookName: this.state.bookName,
+      description: this.state.description,
     }
 
-    let x = await axios.post(URL,formData);
+    let x = await axios.post(URL, formData);
     console.log(x)
     this.setState({
-      bookData:x.data,
-      show:true,
-      showAddModel:false,
+      bookData: x.data,
+      show: true,
+      showAddModel: false,
     })
 
   }
 
   // onchange 
-  ImageURL=e=>{
+  ImageURL = e => {
     e.preventDefault();
-    let imageURLTarget=e.target.value
+    let imageURLTarget = e.target.value
     this.setState({
-      imageURL:imageURLTarget
+      imageURL: imageURLTarget
 
     })
     console.log(this.state.imageURL)
   }
-  Description=e=>{
+  Description = e => {
     e.preventDefault();
-    let descriptionTarget=e.target.value
+    let descriptionTarget = e.target.value
     this.setState({
-      description:descriptionTarget
+      description: descriptionTarget
 
     })
 
   }
 
-  BookName=e=>{
+  BookName = e => {
     e.preventDefault();
     this.setState({
-      bookName:e.target.value
+      bookName: e.target.value
 
     })
     console.log(this.state.bookName)
@@ -117,116 +119,172 @@ class MyFavoriteBooks extends React.Component {
   }
 
   // lab 013 delete REST
-  remove=async (index)=>{
-    let email=this.props.auth0.user.email
-    let PORT=process.env.REACT_APP_PORT
-    let locally='http://localhost:3020'
-    let URL=`${PORT}/deleteBook`
+  remove = async (index) => {
+    let email = this.props.auth0.user.email
+    let PORT = process.env.REACT_APP_PORT
+    let locally = 'http://localhost:3020'
+    let URL = `${PORT}/deleteBook`
     const details = {
-      email:this.props.auth0.user.email,
-      index:index
+      email: this.props.auth0.user.email,
+      index: index
     }
 
-    
-    let x= await axios.delete(URL,{params:details})
+
+    let x = await axios.delete(URL, { params: details })
     this.setState({
-      bookData:x.data
+      bookData: x.data
     })
-      
+
   }
   // lab 14 create the update button 
-  update=(idx)=>{
-    const valuesBeforeUpdate= this.state.bookData.filter((i,index)=> idx==index);
+  update = (idx) => {
+    const valuesBeforeUpdate = this.state.bookData.filter((i, index) => idx == index);
     this.setState({
-      updateFormShow:true,
-      valuesBeforeUpdateArray:valuesBeforeUpdate,
-      index:idx
+      updateFormShow: true,
+      valuesBeforeUpdateArray: valuesBeforeUpdate,
+      index: idx
     })
-       
+
 
   }
 
-  updateOnDataBase=async e=>{
+  updateOnDataBase = async e => {
     e.preventDefault();
 
-    let PORT=process.env.REACT_APP_PORT;
-    let locally='http://localhost:3020';
-    let index=this.state.index;
-    let URL=`${PORT}/updateBook/${index}`;
+    let PORT = process.env.REACT_APP_PORT;
+    let locally = 'http://localhost:3020';
+    let index = this.state.index;
+    let URL = `${PORT}/updateBook/${index}`;
     const details = {
-      email:this.props.auth0.user.email,
-      imageURL:this.state.imageURL,
-      bookName:this.state.bookName,
-      description:this.state.description,
+      email: this.props.auth0.user.email,
+      imageURL: this.state.imageURL,
+      bookName: this.state.bookName,
+      description: this.state.description,
 
     }
     console.log(index);
     console.log(details)
-    
-    let mongoData= await axios.put(URL,details);
+
+    let mongoData = await axios.put(URL, details);
     // const bookDataAfterUpdate=this.state.bookData.splice(this.state.index,1,mongoData.data)
     this.setState({
-      bookData:mongoData.data,
-      updateFormShow:false,
+      bookData: mongoData.data,
+      updateFormShow: false,
 
 
     })
 
   }
 
-  
+
   render() {
-    const { user, isAuthenticated } = this.props.auth0;    
-      return(
-        <>      
-          
-            <Jumbotron>
-              <h1>My Favorite Books</h1>
-              <p>
-                This is a collection of my favorite books
+    const { user, isAuthenticated } = this.props.auth0;
+    return (
+      <>
+
+        <Jumbotron>
+          <h1>My Favorite Books</h1>
+          <p>
+            This is a collection of my favorite books
               </p>
-            </Jumbotron>
+        </Jumbotron>
 
-            <Button onClick={this.addform}> ADD BOOK </Button>
-            <BookFormModal showAddModel={this.state.showAddModel} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} addToDataBase={this.addToDataBase}/>
-            
-            <UpdateBookForm updateFormShow={this.state.updateFormShow} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} updateOnDataBase={this.updateOnDataBase} valueDatas={this.state.valuesBeforeUpdateArray}/>
+        <Button onClick={this.addform}> ADD BOOK </Button>
+        <BookFormModal showAddModel={this.state.showAddModel} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} addToDataBase={this.addToDataBase} />
 
-            <div class='books'>
+        <UpdateBookForm updateFormShow={this.state.updateFormShow} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} updateOnDataBase={this.updateOnDataBase} valueDatas={this.state.valuesBeforeUpdateArray} />
 
-                { this.state.show &&
-                  this.state.bookData.map((item,idx)=>{
-                    return(
-                      <>
-                      
-                        <Card style={{ width: '18rem' }} key={this.idx}>
-                          <Card.Img variant="top" src={item.img} />
-                          {/* <img src={item.img}/> */}
-                          <Card.Body>
-                            <Card.Title>{item.bookName}</Card.Title>
-                            <Card.Text>
-                              {item.description}
-                            </Card.Text>
-                            <Button variant="primary" onClick={()=> this.remove(idx)}>DELETE</Button>
-                            <Button variant="primary" onClick={()=> this.update(idx)}>UPDATE</Button>
-                          </Card.Body>
-                        </Card>          
+        <div class='books'>
 
-                      </>
+          {this.state.show &&
+            this.state.bookData.map((item, idx) => {
+              return (
+                <>
+
+                  <Card style={{ width: '18rem' }} key={this.idx}>
+                    <Card.Img variant="top" src={item.img} />
+                    {/* <img src={item.img}/> */}
+                    <Card.Body>
+                      <Card.Title>{item.bookName}</Card.Title>
+                      <Card.Text>
+                        {item.description}
+                      </Card.Text>
+                      <Button variant="primary" onClick={() => this.remove(idx)}>DELETE</Button>
+                      <Button variant="primary" onClick={() => this.update(idx)}>UPDATE</Button>
+                    </Card.Body>
+                  </Card>
 
 
 
-                    )
 
 
-                  })
-                }
-            </div>    
+{/* 
 
-        
-        </>
-      )
-    
+                  <Table striped bordered hover>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Username</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td colSpan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </Table> */}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </>
+
+
+
+              )
+
+
+            })
+          }
+        </div>
+
+
+      </>
+    )
+
   }
 }
 

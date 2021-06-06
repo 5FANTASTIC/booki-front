@@ -4,9 +4,9 @@ import App from "./App";
 import { Auth0Provider } from "@auth0/auth0-react";
 import LoginButton from './components/LoginButton.js';
 import LogoutButton from './components/LogoutButton.js';
-import Profile from './components/Profile.js';
+import Profile from './components/Info.js';
 import MyFavoriteBooks from './myFavoriteBooks'
-import Login from './Login'
+import FirstPage from './FirstPage'
 
 ReactDOM.render(
   <Auth0Provider
