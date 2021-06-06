@@ -105,7 +105,6 @@ class FirstPage extends React.Component {
                 </Carousel.Item>
               </Carousel>
               
-
             </div>
 
             <br></br><br></br><br></br><br></br><br></br><br></br>
