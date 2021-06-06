@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
-import BookSection1 from './components/BookSection1.css'
+import BookSelected1 from './components/BookSelected.css'
 class Footer extends React.Component {
   render() {
     return (

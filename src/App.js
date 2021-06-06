@@ -12,7 +12,7 @@ import MyFavoriteBooks from './myFavoriteBooks'
 import FirstPage from './FirstPage';
 import Info from './components/Info.js';
 import BookFormModal from './components/BookFormModal.js'
-import BookSection from './components/BookSection';
+import BookSelected from './components/BookSelected';
 import NavWebsite from './components/NavWebsite'
 
 class App extends React.Component {
@@ -41,6 +41,10 @@ class App extends React.Component {
             <Route exact path="/Info">
               {this.props.auth0.isAuthenticated ? <Info /> : <firstPage />}
             </Route>
+            <Route exact path="/BookSelected">
+              {this.props.auth0.isAuthenticated ? <BookSelected /> : <firstPage />}
+            </Route>
+            
           </Switch>
           <Footer />
           {/* </IsLoadingAndError> */}

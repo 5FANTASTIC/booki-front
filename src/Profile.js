@@ -1,6 +1,6 @@
 import React from "react";
-import BookSection1 from './BookSection1.css';
-import { useAuth0 } from "@auth0/auth0-react";
+import BookSelected from './BookSelected.css';
+import { useAuth0, withAuth0 } from "@auth0/auth0-react";
 
 
 const Profile= () => {
@@ -22,4 +22,4 @@ const Profile= () => {
   );
 };
 
-export default Profile;
+export default withAuth0(Profile);
