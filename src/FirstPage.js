@@ -21,11 +21,7 @@ class FirstPage extends React.Component {
 
       <>
         {/* If user Login the navbar will show */}
-        <>
-          { isAuthenticated && (
-            <NavWebsite />
-          )}
-        </>
+       
 
         {/* slide Img for first page */}
         <>

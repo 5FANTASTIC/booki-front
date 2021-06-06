@@ -8,7 +8,12 @@ class AboutUs extends React.Component {
 
       return(
         <>
-      
+       <p>Alaa</p>
+       <p>Zienab</p>
+       <p>Noor</p>
+       <p>Ahmad</p>
+       <p>Amara</p>
+
         </>
       )
     }
