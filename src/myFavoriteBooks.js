@@ -9,7 +9,8 @@ import Button from 'react-bootstrap/Button';
 import myFavoriteBooks from './myFavoriteBooks.css';
 import BookFormModal from './components/BookFormModal.js';
 import UpdateBookForm from './components/UpdateBookForm.js';
-import Table from 'react-bootstrap/Table';
+import BookDetails from './components/BookDetails.js';
+import Table from 'react-bootstrap/Table'
 
 
 
@@ -27,6 +28,10 @@ class MyFavoriteBooks extends React.Component {
       updateFormShow: false,
       index: 0,
       valuesBeforeUpdateArray: [],
+      showBookDetailModel:false,
+      BookModelData:[],
+      authorsBooksSuggestion:[],
+      comment:'',
 
     }
 
@@ -38,20 +43,69 @@ class MyFavoriteBooks extends React.Component {
       let email = this.props.auth0.user.email
       let PORT = process.env.REACT_APP_PORT
       let locally = 'http://localhost:3020'
-      let URL = `${PORT}/books?email=${email}`
+      let URL = `${PORT}/mybooks?email=${email}`
       let data = await axios.get(URL);
       if (data.data.length > 0) {
         this.setState({
           bookData: data.data,
           show: true
         })
+        console.log(this.state.bookData)
       }
+
     } catch {
       this.setState({
         show: false
       })
     }
   }
+  
+  // show the remaining details
+
+  showRemainDetails=(item,idx)=>{
+    console.log(item)
+    this.suggestAuthorsBooks(item);
+    console.log(this.state.authorsBooksSuggestion)
+    this.setState({
+      showBookDetailModel:true,
+      BookModelData:item,
+      index:idx
+      
+      
+    })
+    console.log(this.state.BookModelData)
+    console.log(this.state.showBookDetailModel)
+
+  }
+  // suggest more for auther 
+
+  suggestAuthorsBooks=(item)=>{
+    let authersList=item.authors.split(',')
+    console.log(authersList)
+    let category='Engineering'
+    let PORT = process.env.REACT_APP_PORT
+    let locally = 'http://localhost:3020'
+    let allAuthorsBooks=[];
+    let promises=[];
+    for(let i=0;i<authersList.length;i++){
+      promises.push(           
+              axios.get(`http://localhost:3020/autherpublications?author=${authersList[i]}`).then(result=>{
+   
+                  allAuthorsBooks.push(... result.data)
+                  // console.log(collectionsData)        
+              }        
+              )   
+      )
+   }
+   Promise.all(promises).then(() => {
+     this.setState({
+      authorsBooksSuggestion:allAuthorsBooks
+     })
+   }); 
+  
+
+};
+
   // lab 013 functions forms+add Data to dataBase 
   // present the form 
   addform = e => {
@@ -63,7 +117,15 @@ class MyFavoriteBooks extends React.Component {
     console.log('showAddModel', this.state.showAddModel)
 
   }
-  // send to Backend to add the new data 
+  // send to Backend to add the new comments/notes change 
+  assignComment=(e)=>{
+    e.preventDefault();
+    this.setState({
+      comment: e.target.value
+
+    })
+  } 
+
   addToDataBase = async (event) => {
     event.preventDefault();
     let email = this.props.auth0.user.email
@@ -130,9 +192,9 @@ class MyFavoriteBooks extends React.Component {
     }
 
 
-    let x = await axios.delete(URL, { params: details })
+    let bookDataAfterDelete = await axios.delete(URL, { params: details })
     this.setState({
-      bookData: x.data
+      bookData: bookDataAfterDelete.data
     })
 
   }
@@ -148,21 +210,27 @@ class MyFavoriteBooks extends React.Component {
 
   }
 
-  updateOnDataBase = async e => {
+  updateComment = async e => {
     e.preventDefault();
 
     let PORT = process.env.REACT_APP_PORT;
     let locally = 'http://localhost:3020';
     let index = this.state.index;
-    let URL = `${PORT}/updateBook/${index}`;
+    let URL = `${PORT}/updateComment/${index}`;
+    
     const details = {
       email: this.props.auth0.user.email,
-      imageURL: this.state.imageURL,
-      bookName: this.state.bookName,
-      description: this.state.description,
-
+      title:this.state.bookData[this.state.index].title,
+      authors: this.state.bookData[this.state.index].authors,
+      description: this.state.bookData[this.state.index].description,
+      publisher: this.state.bookData[this.state.index].publisher,
+      publishedDate: this.state.bookData[this.state.index].publishedDate,
+      imageLinks: this.state.bookData[this.state.index].imageLinks,
+      previewLink: this.state.bookData[this.state.index].previewLink,
+      buyLink: this.state.bookData[this.state.index].buyLink,
+      note:this.state.comment,
     }
-    console.log(index);
+
     console.log(details)
 
     let mongoData = await axios.put(URL, details);
@@ -173,99 +241,89 @@ class MyFavoriteBooks extends React.Component {
 
 
     })
+    console.log(this.state.bookData)
 
   }
 
 
   render() {
     const { user, isAuthenticated } = this.props.auth0;
+    console.log(isAuthenticated);
+    console.log(this.state.bookData);
+    // this.componentDidMount();
+    
     return (
-      <>
+      <>                 
 
         <Jumbotron>
-          <h1>My Favorite Books</h1>
-          <p>
-            This is a collection of my favorite books
-              </p>
+          <h1> Favorite Books List</h1>
+          
         </Jumbotron>
+{/*      
+        {/* <Button onClick={this.addform}> ADD BOOK </Button> */}
+        {/* <BookFormModal showAddModel={this.state.showAddModel} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} addToDataBase={this.addToDataBase} /> */}
 
-        <Button onClick={this.addform}> ADD BOOK </Button>
-        <BookFormModal showAddModel={this.state.showAddModel} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} addToDataBase={this.addToDataBase} />
-
-        <UpdateBookForm updateFormShow={this.state.updateFormShow} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} updateOnDataBase={this.updateOnDataBase} valueDatas={this.state.valuesBeforeUpdateArray} />
+        {/* <UpdateBookForm updateFormShow={this.state.updateFormShow} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} updateOnDataBase={this.updateOnDataBase} valueDatas={this.state.valuesBeforeUpdateArray} /> */}
 
         <div class='books'>
+        {
+          ! this.state.showBookDetailModel &&
+          <>
 
-          {this.state.show &&
+            <Table striped bordered hover variant="dark">
+                <thead>
+                  <tr>
+                    <th>No</th>
+                    <th>Book</th>
+                    <th>Title</th>
+                    <th>Authors</th>
+                    <th>Delete</th>
+                    <th>More Details</th>
+                    <th>Add Comment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                { this.state.bookData.map((item,index)=>{
+                  return(
+                    <>
+                      <tr>
+                        <td>{index}</td>
+                        <td><a href={item.previewLink}><img  src={item.imageLinks != 'NAN' ? item.imageLinks : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg' } alt='Book'/> </a></td>
+                        <td>{item.title}</td>
+                        <td>{item.authors}</td>
+                        <td><Button variant="primary" onClick={() => this.remove(index)}>Delete</Button></td>
+                        <td><Button variant="primary" onClick={() => this.showRemainDetails(item,index)}>More Details</Button></td>
+                        <td class='notes'>{item.note}</td>
+                      </tr>
+
+                    </>
+
+                  )
+                })}
+
+
+                  </tbody>
+            </Table>
+          </>
+        }
+
+
+
+                  {
+                    this.state.showBookDetailModel && 
+
+                    <BookDetails showBookDetailModel={this.state.showBookDetailModel} BookModelData={this.state.BookModelData} authorsBooksSuggestion={this.state.authorsBooksSuggestion} updateComment={this.updateComment} assignComment={this.assignComment}/>
+                   
+                  }
+
+
+          {/* {this.state.show &&
+
+          
             this.state.bookData.map((item, idx) => {
               return (
                 <>
-
-                  <Card style={{ width: '18rem' }} key={this.idx}>
-                    <Card.Img variant="top" src={item.img} />
-                    {/* <img src={item.img}/> */}
-                    <Card.Body>
-                      <Card.Title>{item.bookName}</Card.Title>
-                      <Card.Text>
-                        {item.description}
-                      </Card.Text>
-                      <Button variant="primary" onClick={() => this.remove(idx)}>DELETE</Button>
-                      <Button variant="primary" onClick={() => this.update(idx)}>UPDATE</Button>
-                    </Card.Body>
-                  </Card>
-
-
-
-
-
-{/* 
-
-                  <Table striped bordered hover>
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td colSpan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </Table> */}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                  
 
 
 
@@ -277,9 +335,9 @@ class MyFavoriteBooks extends React.Component {
               )
 
 
-            })
+            }) */}
           }
-        </div>
+        </div> */}
 
 
       </>

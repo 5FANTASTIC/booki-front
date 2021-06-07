@@ -8,7 +8,6 @@ class UpdateBookForm extends React.Component{
 
 
     render(){
-        console.log(this.props.valueDatas)
         return(
             <>
                 { this.props.updateFormShow && 

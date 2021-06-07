@@ -1,0 +1,32 @@
+.mycard{
+    width:400px;
+    display:flex;
+    flex-direction:column;
+
+
+}
+#container {
+    overflow-y: auto;
+    height: 200px;
+    padding: 20px;
+}
+.card{
+    display:flex;
+    flex-direction:row;
+    width:400px
+
+
+}
+.box{
+    display:flex;
+    flex-direction:column;
+    width:200px;
+}
+.cardImg{
+    height:170px;
+    width:120px;
+
+    
+
+}
+

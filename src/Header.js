@@ -22,7 +22,7 @@ class Header extends React.Component {
         <Navbar bg="primary" variant="dark">
           <Navbar.Brand href="#home"><Image src="https://i.pinimg.com/originals/fe/b4/19/feb4198b5165a9813187f73c53eea76d.png" alt='LOGO' rounded width='150' /></Navbar.Brand>
           <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="#features">Profile</Nav.Link>
             {/* <NavDropdown title="Selected Books" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Categories</NavDropdown.Item>
@@ -31,12 +31,12 @@ class Header extends React.Component {
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown> */}
-            <Nav.Link href="./components/BookSelected.js">Selected Books</Nav.Link>
+            <Nav.Link href="./components/BookSelected.js">Select Books</Nav.Link>
             <Nav.Link href="#home">About us</Nav.Link>
             {
-              this.props.isAuthenticated &&
+              isAuthenticated &&
               <>
-                <Nav.Link href="#home">My Favourite Books</Nav.Link>
+                <Nav.Link href="/myFavoriteBooks">My Favourite Books</Nav.Link>
                 <Nav.Link href="#home">Profile</Nav.Link>
 
               </>

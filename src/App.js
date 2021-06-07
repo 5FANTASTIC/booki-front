@@ -13,7 +13,9 @@ import FirstPage from './FirstPage';
 import Info from './components/Info.js';
 import BookFormModal from './components/BookFormModal.js'
 import BookSelected from './components/BookSelected';
+import SelectBook from './components/SelectBook';
 import NavWebsite from './components/NavWebsite'
+
 
 class App extends React.Component {
   constructor(props) {
@@ -34,15 +36,18 @@ class App extends React.Component {
           <Header />
 
           <Switch>
+            
             <Route exact path="/">
-              {/* {! this.props.auth0.isAuthenticated ? <firstPage/> : <firstPage/>}  */}
-              <FirstPage />
+
+              {! this.props.auth0.isAuthenticated ? <firstPage/> : <MyFavoriteBooks />} 
+              {/* <FirstPage /> */}
             </Route>
             <Route exact path="/Info">
               {this.props.auth0.isAuthenticated ? <Info /> : <firstPage />}
             </Route>
-            <Route exact path="/BookSelected">
-              {this.props.auth0.isAuthenticated ? <BookSelected /> : <firstPage />}
+            <Route exact path="/myFavoriteBooks">
+            <MyFavoriteBooks />
+              {/* {this.props.auth0.isAuthenticated ? <MyFavoriteBooks /> : <firstPage />} */}
             </Route>
             
           </Switch>
