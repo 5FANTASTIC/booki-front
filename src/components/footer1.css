@@ -1,0 +1,10 @@
+.h:hover{
+  color: #917524;
+  font-size: 120%;
+  font-family:  "Lucida Console", "Courier New", monospace;	
+    
+  }
+  .copyright-text{
+   text-align: center;
+   margin-left: 50%;
+  }
