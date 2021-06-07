@@ -3,6 +3,7 @@
   }
 body{
   background-color: #e6e1dd;
+  font-family:'serif';
 }
     
 .nav1{
@@ -72,6 +73,14 @@ display: flex; justify-content: center; align-items: center; min-height: 100vh; 
   .services-box .box h3 { position: relative; z-index: 99; font-size: 28px; color: #333; transition: 0.5s;padding:15px;}
   .services-box .box p { position: relative; color: #555; transition: 0.5s; z-index: 99;line-height: 1.8 ;letter-spacing:0.5px;}
   .services-box .box:hover h3, .services-box .box:hover p { color: #fff;}
+
+
+
+
+/*  */
+
+
+
 
   /* footer */
   .site-footer

@@ -57,38 +57,38 @@ class FirstPage extends React.Component {
                     width="100"
                     height="700"
                   />
-                  <Carousel.Caption>
+                  {/* <Carousel.Caption>
                     <p class="firstP">A book is like a garden,<br /> carried in the pocket</p>
-                  </Carousel.Caption>
+                  </Carousel.Caption> */}
                 </Carousel.Item>
 
 
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src="https://images.unsplash.com/photo-1569511166187-97eb6e387e19?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=785&q=80"
+                    src="https://images.unsplash.com/photo-1530538987395-032d1800fdd4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"
                     alt="First slide"
                     width="100"
                     height="700"
                   />
-                  <Carousel.Caption>
+                  {/* <Carousel.Caption>
                     <p class="firstP">Books and friends should be few but good</p>
-                  </Carousel.Caption>
+                  </Carousel.Caption> */}
                 </Carousel.Item>
 
 
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src="https://images.unsplash.com/photo-1455894127589-22f75500213a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=679&q=80"
+                    src="https://images.unsplash.com/photo-1522100566122-761ddcf1db3e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80https://images.unsplash.com/photo-1522100566122-761ddcf1db3e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80"
                     alt="First slide"
                     width="100"
                     height="700"
                   />
-                  <Carousel.Caption>
+                  {/* <Carousel.Caption>
 
                     <p class="firstP" style={{ fontSize: '90px' }}> If a fool borrows a book cut off his hand; but cut off both hands of the fool who brings it</p>
-                  </Carousel.Caption>
+                  </Carousel.Caption> */}
                 </Carousel.Item>
 
                 <Carousel.Item>
@@ -99,23 +99,25 @@ class FirstPage extends React.Component {
                     width="100"
                     height="700"
                   />
-                  <Carousel.Caption>
+                  {/* <Carousel.Caption>
                     <p class="firstP" style={{ marginTop: '-1000' }}>we eat to feed our body, we  read to feed our brain</p>
-                  </Carousel.Caption>
+                  </Carousel.Caption> */}
                 </Carousel.Item>
               </Carousel>
 
             </div>
-
+         
             <br></br><br></br><br></br><br></br><br></br><br></br>
             <div class="PartAboutus">
 
               <Jumbotron fluid >
                 <Container>
+                  
                   <Row>
                     <Col>
-                      <h1 style={{ color: '#917524', textAlign: 'center', textShadow: '2px 4px #293b5f' }}>BOOKI</h1>
-                      <p style={{ color: '#293b5f', textAlign: 'justify', fontSize: '20px', textIndent: '20px', lineHeight: '1.8', letterSpacing: '0.5px' }}>
+                      <h1 style={{ color: '#917524', textAlign: 'center', textShadow: '2px 4px #293b5f' }}>BOOKI</h1> 
+                      <h2  style={{ color: '#917524', textAlign: 'center',fontFamily:'serif'  }}> A book is like a garden,<br /> carried in the pocket</h2>
+                      <p style={{ color: '#293b5f', textAlign: 'justify', fontSize: '20px', textIndent: '20px', lineHeight: '1.8', letterSpacing: '0.5px',fontFamily:'serif'  }}>
                         A book is a medium for recording information in the form of writing or images.
                         But with the advancement of technology, reading on paper has become less and less common and a new term has entered our lives, which is electronic book, also known as an e-book or eBook, is a book publication made available in digital form, consisting of text, images, or both, readable on the flat-panel display of computers or other electronic devices.
                         Our website is your library to search about any book you need from any category, you can have your own ebooks and read them any time you need using your account.
@@ -133,23 +135,24 @@ class FirstPage extends React.Component {
 
             </div>
             <br></br><br></br><br></br><br></br><br></br><br></br>
+            <h2  style={{ color: '#917524', textAlign: 'center',marginBottom:'-65px',fontWeight:'bolder',fontSize:'38px',fontFamily:'serif',opacity:'0.9' }}>Our Services </h2>
             <section class="service">
               <div class="services-box">
                 <div class="box">
                   <h2><FcAddressBook></FcAddressBook></h2>
-                  <h3>Service </h3>
+                  <h3 style={{ color: '#917524', textAlign: 'center',fontWeight:'bolder',fontFamily:'serif',opacity:'0.9' }}>Service </h3>
                   <p>You can search about any book you need from any category, such as Engineering, Computer, Maths, etc..</p>
                 </div>
 
                 <div class="box">
                   <h2><FcFinePrint></FcFinePrint></h2>
-                  <h3>More features</h3>
+                  <h3 style={{ color: '#917524', textAlign: 'center',fontWeight:'bolder',fontFamily:'serif',opacity:'0.9' }}>More features</h3>
                   <p>You just need to join us by creating a new account so that you can get benefit from our features by having your own books in your library for an unlimited period and create notes .</p>
                 </div>
 
                 <div class="box">
                   <h2><FcOk></FcOk></h2>
-                  <h3>For free</h3>
+                  <h3 style={{ color: '#917524', textAlign: 'center',fontWeight:'bolder',fontFamily:'serif',opacity:'0.9' }}>For free</h3>
                   <p>You can get a preview of any book with all categories Books on different topics for free.</p>
                 </div>
               </div>
