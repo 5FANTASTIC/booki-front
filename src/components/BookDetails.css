@@ -1,0 +1,26 @@
+.detials{
+    width: 75%;
+    padding-bottom: 100px;
+    
+}
+.detials img{
+    width: 250px;
+}
+
+.bookde{
+    display:flex;
+    flex-direction: column;
+    
+
+}
+.Carousel{
+    margin: 50px;
+    height: 250px;
+}
+/* .Carousel img{
+    height: 100px;
+} */
+.carouselItems img{
+    heignt: 20px;
+    weidth: 10px;
+}

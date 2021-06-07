@@ -12,7 +12,7 @@ import MyFavoriteBooks from './myFavoriteBooks'
 import FirstPage from './FirstPage';
 import Info from './components/Info.js';
 import BookFormModal from './components/BookFormModal.js'
-import BookSelected from './components/BookSelected';
+import SelectBook from './components/SelectBook';
 import NavWebsite from './components/NavWebsite';
 import Profile from './Profile.js';
 import AboutUs from './components/AboutUs.js';
@@ -47,8 +47,8 @@ class App extends React.Component {
               {this.props.auth0.isAuthenticated ? <FirstPage /> : <FirstPage />}
             
             </Route>
-            <Route exact path="/BookSelected">
-             <BookSelected /> 
+            <Route exact path="/SelectBook">
+             <SelectBook /> 
             
             </Route>
 

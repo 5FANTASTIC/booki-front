@@ -6,12 +6,12 @@ import BookSelected1 from './BookSelected.css'
 
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+// change the name to faviroue book 
 class BookSelected extends React.Component {
   render() {
     console.log('thissss>>>', );
     return (
-
-
+      
       <>
 
             
