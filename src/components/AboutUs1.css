@@ -1,0 +1,16 @@
+.cardAboutUs:hover  {
+font-size: 20px;
+
+}
+
+.cardAboutUs:hover > div {
+    background-color: #9176243f;
+    ;
+  }
+  .cardAboutUs:hover{ transform: scale(1.1)}
+  /* * {
+     font-family:  "Lucida Console", "Courier New", monospace;	;
+      
+
+  }
+ */
