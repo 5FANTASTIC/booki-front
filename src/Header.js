@@ -47,7 +47,7 @@ class Header extends React.Component {
               {/* <Nav.Link href="/Profile">Profile</Nav.Link>
             <Nav.Link href="/MyFavoriteBooks">My Favourite </Nav.Link> */}
 
-              <Link class="NavBarPart" style={{ textDecoration: 'none' }} to="/BookSelected">Books</Link>
+              <Link class="NavBarPart" style={{ textDecoration: 'none' }} to="/SelectBook">Books</Link>
 
               {isAuthenticated &&
                 <>
@@ -71,6 +71,7 @@ class Header extends React.Component {
 
           <br />
         </div>
+
 
 
       </>

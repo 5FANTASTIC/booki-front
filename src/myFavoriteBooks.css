@@ -8,3 +8,8 @@
   margin-top: 20px;
 
 }
+.notes {
+    overflow-y: auto;
+    height: 200px;
+    padding: 20px;
+}
