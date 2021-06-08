@@ -79,7 +79,7 @@ class SelectBook extends React.Component {
             publisher: item.publisher != undefined ? item.publisher : 'NAN',
             publishedDate: item.publishedDate != undefined ? item.publishedDate : 'NAN',
             description: item.description != undefined ? item.description : 'NAN',
-            imageLinks: item.imageLinks.smallThumbnail != undefined ? item.imageLinks.smallThumbnail : 'NAN',
+            imageLinks: item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'NAN',
             previewLink: item.previewLink != undefined ? item.previewLink : 'NAN',
             buyLink: item.buyLink != undefined ? item.buyLink : 'NAN',
 
