@@ -33,7 +33,7 @@ body{
   font-size: 208px; 
   font-weight: bolder;
   color: #e6e1dd;
-  margin-top: -450px;
+  margin-top: -350px;
   margin-bottom:20px;
   opacity:0.7;
 
@@ -62,7 +62,7 @@ body{
   display: -ms-flex;
   display: -o-flex;
   
-display: flex; justify-content: center; align-items: center; min-height: 100vh;    background: linear-gradient(#667fb6, #c5bffc 50%, #e6e1dd  50%, #fff);   }
+display: flex; justify-content: center; align-items: center; min-height: 100vh;    background:#022E57  }
   .services-box { width: 1100px; display: -webkit-flex; display: -moz-flex; display: -ms-flex;  display: -o-flex;
   display: flex; justify-content: space-between; flex-wrap: wrap;}
   .services-box .box { position: relative; width: 280px; background: #ebe8df; padding: 60px 40px 60px; box-shadow: 0px 15px 45px rgba(0,0,0,.1);}
