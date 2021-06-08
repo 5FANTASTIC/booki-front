@@ -77,11 +77,13 @@ class SelectBook extends React.Component {
             title: item.title != undefined ? item.title : 'NAN',
             authors: item.authors != undefined ? item.authors[0] : 'NAN',
             publisher: item.publisher != undefined ? item.publisher : 'NAN',
-            publishedDate: item.publishedDate != undefined ? item.publishedDate : 'NAN',
+            // I used this to hold the category I need it as I have an issue in adding new object item
+            publishedDate: item.categories != undefined ? item.categories[0] : 'NAN',
             description: item.description != undefined ? item.description : 'NAN',
             imageLinks: item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'NAN',
             previewLink: item.previewLink != undefined ? item.previewLink : 'NAN',
             buyLink: item.buyLink != undefined ? item.buyLink : 'NAN',
+            category:item.categories != undefined ? item.categories[0] : 'NAN',
 
         }
         console.log(formData)
