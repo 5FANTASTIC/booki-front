@@ -1,7 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+.catGroup{
+    text-transform: uppercase;
+    font-size:15px;
+    margin-top: -24px;
 
+}
 .CatList{
-    width: 10em;
+    width: 100%;
     color: #022e57;
     background-color: #917624c0;
     text-align: center;
@@ -12,17 +17,22 @@
     background-color: #917624e7;
     border-color: #022e57;
 }
-
+.searchForm{
+    margin-bottom: 1.5em;
+}
+.searchButton {
+    background-color: rgba(255, 248, 220, 0);
+    border-color: rgba(255, 248, 220, 0);
+}
+.searchButton:hover{
+    background-color: rgba(255, 248, 220, 0);
+    border-color: rgba(255, 248, 220, 0);
+}
 
 .global-class-name:hover{
     transform: scale(1.3);
 }
-.searchForm{
-    margin-bottom: 1.5em;
-}
-.iconSearch{
-    size: 300px;
-}
+
 /***********************CardPart*************************/
 .cardButton{
     font-family: 'Happy Monkey', cursive;
@@ -72,7 +82,7 @@
     -webkit-box-orient: vertical;
 }
 .listBook{
-    width: 16rem;
+    width: 15rem;
     margin-top: 0vh;
         margin-bottom: 50px;
 
