@@ -1,26 +1,78 @@
+.bookde{
+    width:100%
+}
+.container{
+    display:flex;
+    width:100%
+    
+}
+.conatiner2{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    justify-items:center;
+    align-content:center;
+    margin-left:70px
+    
+}
+
 .detials{
-    width: 75%;
-    padding-bottom: 100px;
+    width: 65%;
+    height:auto;
+    padding: 0;
+    margin:0;
+    border: 3px solid #02192d;
+    border-radius: 5px;
+    background-color:white;
+
     
 }
 .detials img{
-    width: 250px;
+    width: 150px;
+    padding: 10px;
+}
+.unit{
+    border-left: 5px groove #385fb7; 
+    background-color: #e5eaf1;
+    /* #f9eeee;; */
+    margin:5px
+}
+.boltFont{
+    font-weight:bold;
 }
 
-.bookde{
+/* .bookde{
     display:flex;
     flex-direction: column;
     
 
-}
-.Carousel{
-    margin: 50px;
-    height: 250px;
-}
-/* .Carousel img{
-    height: 100px;
 } */
-.carouselItems img{
-    heignt: 20px;
-    weidth: 10px;
+.Carousel{
+    width:300px;
+    /* height: 250px; */
 }
+.form-control{
+    background-color:#e5eaf1;
+
+}
+
+/* .carouselItems {
+    height: 20px;
+    width: 10px;
+} */
+
+.buttonC{
+  background-color: #02192d;
+  color:white;
+
+
+}
+.buttonC a{
+  background-color: #02192d;
+  color:white;
+
+
+}
+
+

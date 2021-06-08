@@ -289,19 +289,13 @@ class MyFavoriteBooks extends React.Component {
     // this.componentDidMount();
     
     return (
-      <>                 
-
-        <Jumbotron>
-          <h1> Favorite Books List</h1>
-          
-        </Jumbotron>
-
+      <>  
         <div class='books'>
           {
             ! this.state.showBookDetailModel &&
             <>
 
-              <Table striped bordered hover variant="dark">
+              <Table striped bordered hover variant="dark" className='table'>
                   <thead>
                     <tr>
                       <th>No</th>
@@ -309,7 +303,7 @@ class MyFavoriteBooks extends React.Component {
                       <th>Title</th>
                       <th>Authors</th>
                       <th>Delete</th>
-                      <th>More Details</th>
+                      <th>Details</th>
                       <th>My Comment</th>
                     </tr>
                   </thead>
@@ -318,12 +312,12 @@ class MyFavoriteBooks extends React.Component {
                     return(
                       <>
                         <tr>
-                          <td>{index}</td>
-                          <td><a href={item.previewLink}><img  src={item.imageLinks != 'NAN' ? item.imageLinks : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg' } alt='Book'/> </a></td>
+                          <td>{index+1}</td>
+                          <td><a href={item.previewLink}><img  height='100' src={item.imageLinks != 'NAN' ? item.imageLinks : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg' } alt='Book'/> </a></td>
                           <td>{item.title}</td>
                           <td>{item.authors}</td>
-                          <td><Button variant="primary" onClick={() => this.remove(index)}>Delete</Button></td>
-                          <td><Button variant="primary" onClick={() => this.showRemainDetails(item,index)}>More Details</Button></td>
+                          <td><Button className='buttonC' onClick={() => this.remove(index)}>Delete</Button></td>
+                          <td><Button className='buttonC' onClick={() => this.showRemainDetails(item,index)}>Details</Button></td>
                           <td class='notes'>{item.note}</td>
                         </tr>
 
@@ -336,17 +330,14 @@ class MyFavoriteBooks extends React.Component {
               </Table>
             </>
           }
-          {
+          
+        </div> 
+        {
             this.state.showBookDetailModel && 
 
             <BookDetails showBookDetailModel={this.state.showBookDetailModel} BookModelData={this.state.BookModelData} showAutherbook={this.state.showAutherbook} authorsBooksSuggestion={this.state.authorsBooksSuggestion} updateComment={this.updateComment} assignComment={this.assignComment} closeDetail={this.closeDetail} relatedBooks={this.state.relatedBooks}/>
             
           }
-
-
-          
-          
-        </div> 
 
 
       </>

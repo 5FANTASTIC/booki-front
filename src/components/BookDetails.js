@@ -65,65 +65,62 @@ class BookDetails extends React.Component {
         console.log(this.state.showDetail)
         console.log(this.props.authorsBooksSuggestion)
         return(
-            <div className='bookde'>
+            <>
             { this.props.showBookDetailModel && 
                 
                 <>
-                <div class='container'> 
+                 
+                 <div class='container'>
 
-                   <Modal.Dialog classname='detials'>
+                   <div class='detials' >
                         <Modal.Header >
                             <img src={this.props.BookModelData.imageLinks }/>
-                            {this.props.BookModelData.title}
-                            <Modal.Title></Modal.Title>
+                            <Form onSubmit={e=>  this.props.updateComment(e)}>
+                                
+                            <textarea className="form-control"  id="exampleFormControlTextarea1"  rows="5" cols='70' onChange={e=> this.props.assignComment(e)}>{this.props.BookModelData.note}</textarea>
+                            <Button className='buttonC' type="submit"  >  Save   </Button>
+
+                            </Form>
                         </Modal.Header>
                         
 
-                        <Modal.Body>
-                        Title: {this.props.BookModelData.title}
+                        <Modal.Body className='unit'>
+                        <span class='boltFont'>Title: </span> {this.props.BookModelData.title}
                         </Modal.Body>
-                        <Modal.Body>
-                        Authors: {this.props.BookModelData.authors}
+                        <Modal.Body className='unit'>
+                       <span class='boltFont'> Authors: </span> {this.props.BookModelData.authors}
                         </Modal.Body>
-                        <Modal.Body>
-                        Publisher: {this.props.BookModelData.publisher}
+                        <Modal.Body className='unit'>
+                       <span class='boltFont'> Publisher: </span>  {this.props.BookModelData.publisher}
                         </Modal.Body>
-                        <Modal.Body>
-                        publishedDate: {this.props.BookModelData.publishedDate}
+                        <Modal.Body className='unit'>
+                        <span class='boltFont'> Category: </span> {this.props.BookModelData.publishedDate}
                         </Modal.Body>
-                        <Modal.Body>
-                        Description: {this.props.BookModelData.description}
-                        </Modal.Body>
-                        <Modal.Body>
-                         <a href={this.props.BookModelData.previewLink}>preview Link </a>
-                        </Modal.Body>
-                        <Modal.Body>
-                        <a href={this.props.BookModelData.buyLink}>Buy Link</a>
+                        <Modal.Body className='unit'>
+                        <span class='boltFont'> Description: </span> {this.props.BookModelData.description}
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="primary" onClick={()=> this.props.closeDetail()}>Back To Faviroutr List  </Button>
+                            <Button className='buttonC' ><a href={this.props.BookModelData.previewLink}>Preview</a> </Button>
+                            <Button className='buttonC' ><a href={this.props.BookModelData.buyLink}>Buy </a> </Button>
+                            <Button className='buttonC' onClick={()=> this.props.closeDetail()}>Back </Button>
                         </Modal.Footer>
                         
-                    </Modal.Dialog>
-                    <Form onSubmit={e=>  this.props.updateComment(e)}>
-                                
-                        <textarea  onChange={e=> this.props.assignComment(e)}>{this.props.BookModelData.note}</textarea>
-                        <Button variant="primary" type="submit"  >  Save   </Button>
+                    </div>
+                    <div class='conatiner2'>
 
-                    </Form>
-                </div>   
+
                 {this.props.showAutherbook &&
                 <>
                 <h3> other Authors works</h3>
                     
-                    <Carousel classname='Carousel'>
+                    <Carousel className='Carousel' >
                         {
                             this.props.authorsBooksSuggestion.map(item=>{
 
                                 return(
                                  
                                     
-                                    <Carousel.Item class='carouselItems'>
+                                    <Carousel.Item className='carouselItems'>
 
                                             <Col >
                                                 <Card className='mycard' key={this.idx} style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
@@ -160,14 +157,14 @@ class BookDetails extends React.Component {
                 }
                 <h3> Related Books</h3>
                     
-                    <Carousel fade classname='Carousel'>
+                    <Carousel  className='Carousel'>
                         {
                             this.props.relatedBooks.map(item=>{
 
                                 return(
                                  
                                     
-                                    <Carousel.Item class='carouselItems'>
+                                    <Carousel.Item className='carouselItems'>
 
                                             <Col >
                                                 <Card className='mycard' key={this.idx} style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
@@ -200,13 +197,19 @@ class BookDetails extends React.Component {
                             )
                         }
                         </Carousel> 
+                    </div>
+                    
+                   
+                    
+                    </div>
+                  
                     
 
 
     
                 </>
             }
-            </div>
+            </>
 
         )
     }
