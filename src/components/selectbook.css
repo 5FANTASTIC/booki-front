@@ -75,3 +75,10 @@ size: 300px;
     text-decoration: none;
     color: #022e57;
 }
+.renderBooks{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}

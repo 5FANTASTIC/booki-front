@@ -46,7 +46,7 @@ class FirstPage extends React.Component {
                     src="https://images.unsplash.com/photo-1567168544230-d5a9401299a4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                     alt="Third slide"
                     width="100"
-                    height="700"
+                    height="541"
                   />
                 </Carousel.Item>
 
@@ -57,7 +57,7 @@ class FirstPage extends React.Component {
                     src="https://images.unsplash.com/photo-1530538987395-032d1800fdd4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80"
                     alt="First slide"
                     width="100"
-                    height="700"
+                    height="541"
                   />
                   {/* <Carousel.Caption>
                     <p class="firstP">Books and friends should be few but good</p>
@@ -71,7 +71,7 @@ class FirstPage extends React.Component {
                     src="https://images.unsplash.com/photo-1522100566122-761ddcf1db3e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80https://images.unsplash.com/photo-1522100566122-761ddcf1db3e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=755&q=80"
                     alt="First slide"
                     width="100"
-                    height="700"
+                    height="541"
                   />
                   {/* <Carousel.Caption>
 

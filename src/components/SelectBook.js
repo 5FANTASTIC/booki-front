@@ -134,18 +134,19 @@ class SelectBook extends React.Component {
                 {  this.state.showHistory &&
 
                     <div classname='renderBooks'>
+                        
+                        <Container>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <Row>
                         {this.state.dataHistory.map((item, idx) => {
                             return (
                                 <>
 
 
-                                    <Container>
-                                        <br />
-                                        <br />
-                                        <br />
-                                        <Row>
 
-                                            <Col>
+                                            <Col >
                                                 <Card className='mycard' key={this.idx} style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
                                                     <div>
                                                         <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
@@ -160,8 +161,7 @@ class SelectBook extends React.Component {
                                                     </div>
                                                 </Card>
                                             </Col>
-                                        </Row>
-                                    </Container>
+                                        
 
                                     <AlertB showAlert={this.state.showAlert} />
 
@@ -178,8 +178,11 @@ class SelectBook extends React.Component {
 
 
                         }
+                        </Row>
+                                    </Container>
 
                     </div>
+                    
 
 
 
