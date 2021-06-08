@@ -5,9 +5,12 @@ import SelectbookCSS from './selectbook.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import AlertB from './Alert';
 import { IconContext } from "react-icons";
-import {Row, Col,Container } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import { GiArchiveResearch } from "react-icons/gi";
-// import {FcSearch}  from "react-icons/fc";
+import { RiHeartAddLine } from "react-icons/ri";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BiShowAlt } from "react-icons/bi";
+
 
 import axios from 'axios';
 
@@ -106,83 +109,117 @@ class SelectBook extends React.Component {
         console.log(this.props.auth0)
         return (
             <>
-                <div className='buttons'>
 
 
-                    <ListGroup horizontal>
-                        <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:history')} className='CatList'>History</ListGroup.Item>
-                        <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Engineering')} className='CatList'>Engineering</ListGroup.Item>
-                        <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:programming')} className='CatList'>Programming</ListGroup.Item>
-                        <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Computer')} className='CatList'>Computer Science</ListGroup.Item>
-                        <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Medicine')} className='CatList'>Medicine</ListGroup.Item>
-                        <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Literature')} className='CatList'>Literature</ListGroup.Item>
-                        <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Science')} className='CatList'>Science</ListGroup.Item>
-                    </ListGroup>
+                <ListGroup horizontal className='catGroup'>
+                    <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:history')} className='CatList'>History</ListGroup.Item>
+                    <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Engineering')} className='CatList'>Engineering</ListGroup.Item>
+                    <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:programming')} className='CatList'>Programming</ListGroup.Item>
+                    <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Computer')} className='CatList'>Computer Science</ListGroup.Item>
+                    <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Medicine')} className='CatList'>Medicine</ListGroup.Item>
+                    <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Literature')} className='CatList'>Literature</ListGroup.Item>
+                    <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Science')} className='CatList'>Science</ListGroup.Item>
+                </ListGroup>
 
-                    <Form inline className='searchForm'>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(event) => this.researchBarContent(event)} />
-<Button onClick={() => this.renderCollection(this.state.researchBarValue)}>
-                        <IconContext.Provider 
+                <Form inline className='searchForm'>
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(event) => this.researchBarContent(event)} />
+                    <Button className='searchButton' onClick={() => this.renderCollection(this.state.researchBarValue)}>
+                        <IconContext.Provider
                             value={{ color: "#917624bd", size: '50', className: "global-class-name" }}
-                            
-                            >
+
+                        >
                             <div>
                                 <GiArchiveResearch />
                             </div>
                         </IconContext.Provider>
-                        </Button>
-                        {/* <p onClick={() => this.renderCollection(this.state.researchBarValue)} ><GiArchiveResearch className='iconSearch' size={60} value={{ color: 'blue' }}></GiArchiveResearch></p> */}
-                    </Form>
-                </div>
+                    </Button>
+                </Form>
                 {  this.state.showHistory &&
 
-                    <div classname='renderBooks'>
-                        
+                    <div>
+
                         <Container>
-                                        <br />
-                                        <br />
-                                        <br />
-                                        <Row>
-                        {this.state.dataHistory.map((item, idx) => {
-                            return (
-                                <>
-                                            <Col >
-                                                <Card className='mycard' key={this.idx} style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
-                                                    <div>
-                                                        <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
-                                                        <h4><center>{item.title}</center></h4>
-                                                        <p id='container'> {item.authors}(Author)</p>
-                                                        <ListGroup horizontal className='listBook'>
-                                                            <ListGroup.Item className='listItem' variant="info">  <a href={item.previewLink}> Preview</a></ListGroup.Item>
-                                                            <ListGroup.Item className='listItem' variant="info">  <a href={item.buyLink}> Buy</a></ListGroup.Item>
-                                                            <ListGroup.Item className='listItem' variant="info" onClick={() => this.addBookFavirote(item)}>  <a href={'#'}>Add</a> </ListGroup.Item>
-                                                        </ListGroup>
+                            <br />
+                            <br />
+                            <br />
+                            <Row >
+                                {this.state.dataHistory.map((item, idx) => {
+                                    return (
+                                        <>
+                                            <Col>
+                                                <div class='cardButton'>
+                                                    <Card className='mycard' key={this.idx} style={{ width: '16rem', height: '14.3rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
+                                                        <div class="firstRow">
+                                                            <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
+                                                            <div class="secondCol">
+                                                                <b >{item.title}</b>
+                                                                <p id='container'> {item.authors} (Author)</p>
+                                                            </div>
+
+                                                        </div>
+
+
                                                         {/* <p id='container'> {item.description}</p> */}
-                                                    </div>
-                                                </Card>
+                                                    </Card>
+                                                    <ListGroup horizontal className='listBook'>
+                                                        <ListGroup.Item className='listItem' variant="info">
+                                                            <a href={item.previewLink}>
+                                                                <IconContext.Provider
+                                                                    value={{ color: "#917624bd", size: '44.9', className: "cardItems" }}
+
+                                                                >
+                                                                    <div>
+                                                                        <BiShowAlt />
+                                                                    </div>
+                                                                </IconContext.Provider></a>
+                                                        </ListGroup.Item>
+                                                        <ListGroup.Item className='listItem' variant="info">  <a href={item.buyLink}>
+                                                            <IconContext.Provider
+                                                                value={{ color: "#917624bd", size: '44.9', className: "cardItems" }}
+
+                                                            >
+                                                                <div>
+                                                                    <AiOutlineShoppingCart />
+                                                                </div>
+                                                            </IconContext.Provider>
+                                                        </a></ListGroup.Item>
+                                                        <ListGroup.Item className='listItem' variant="info" onClick={() => this.addBookFavirote(item)}>  <a href={'#'}><IconContext.Provider
+                                                            value={{ color: "#917624bd", size: '44.9', className: "cardItems" }}
+
+                                                        >
+                                                            <div>
+                                                                <RiHeartAddLine />
+                                                            </div>
+                                                        </IconContext.Provider></a> </ListGroup.Item>
+
+                                                    </ListGroup>
+
+                                                </div>
+
                                             </Col>
-                                        
-
-                                    <AlertB showAlert={this.state.showAlert} />
 
 
-
-                                </>
-
+                                            <AlertB showAlert={this.state.showAlert} />
 
 
-                            )
+                                        </>
 
 
-                        })
+
+                                    )
 
 
-                        }
-                        </Row>
-                                    </Container>
+                                })
+
+
+                                }
+
+                            </Row>
+
+                        </Container>
 
                     </div>
-                    
+
 
 
 
