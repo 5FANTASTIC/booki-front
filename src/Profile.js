@@ -27,11 +27,11 @@ const Profile = () => {
               <br></br>
               <Card.Title>{user.name}</Card.Title>
               <Card.Text>
-                email : {user.email}<br></br>
-                nick Name: {user.nickname}
+                Email : {user.email}<br></br>
+                Nick Name: {user.nickname}
 
               </Card.Text>
-              <Button size="lg" style={{ backgroundColor: '#917524', opacity: '1' }}><a style={{ textDecoration: 'none', color: '#022e57' }} href='https://myaccount.google.com/profile'>show more</a></Button>
+              <Button size="lg" style={{ backgroundColor: '#917524', opacity: '1' }}><a style={{ textDecoration: 'none', color: '#022e57' }} href='https://myaccount.google.com/profile' target='_blank'>show more</a></Button>
             </Card.Body>
           </Card>
 
