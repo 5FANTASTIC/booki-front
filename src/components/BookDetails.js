@@ -113,7 +113,7 @@ class BookDetails extends React.Component {
 
                             )
                         }
-                        </Carousel> */} */}
+                        </Carousel> */} 
                     
 
 
