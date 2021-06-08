@@ -5,7 +5,7 @@ import SelectbookCSS from './selectbook.css';
 import { withAuth0 } from '@auth0/auth0-react';
 import AlertB from './Alert';
 import { IconContext } from "react-icons";
-import {Row, Col,Container } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import { GiArchiveResearch } from "react-icons/gi";
 // import {FcSearch}  from "react-icons/fc";
 
@@ -121,68 +121,79 @@ class SelectBook extends React.Component {
 
                     <Form inline className='searchForm'>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(event) => this.researchBarContent(event)} />
-<Button onClick={() => this.renderCollection(this.state.researchBarValue)}>
-                        <IconContext.Provider 
-                            value={{ color: "#917624bd", size: '50', className: "global-class-name" }}
-                            
+                        <Button onClick={() => this.renderCollection(this.state.researchBarValue)}>
+                            <IconContext.Provider
+                                value={{ color: "#917624bd", size: '50', className: "global-class-name" }}
+
                             >
-                            <div>
-                                <GiArchiveResearch />
-                            </div>
-                        </IconContext.Provider>
+                                <div>
+                                    <GiArchiveResearch />
+                                </div>
+                            </IconContext.Provider>
                         </Button>
                         {/* <p onClick={() => this.renderCollection(this.state.researchBarValue)} ><GiArchiveResearch className='iconSearch' size={60} value={{ color: 'blue' }}></GiArchiveResearch></p> */}
                     </Form>
                 </div>
                 {  this.state.showHistory &&
 
-                    <div classname='renderBooks'>
-                        
+                    <div>
+
                         <Container>
-                                        <br />
-                                        <br />
-                                        <br />
-                                        <Row>
-                        {this.state.dataHistory.map((item, idx) => {
-                            return (
-                                <>
-                                            <Col >
-                                                <Card className='mycard' key={this.idx} style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
-                                                    <div>
+                            <br />
+                            <br />
+                            <br />
+                            <Row >
+                                {this.state.dataHistory.map((item, idx) => {
+                                    return (
+                                        <>
+                                            <Col>
+                                            <div class='cardButton'>
+                                                <Card className='mycard' key={this.idx} style={{ width: '16rem',  height: '14.3rem',background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
+                                                    <div class="firstRow">
                                                         <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
-                                                        <h4><center>{item.title}</center></h4>
-                                                        <p id='container'> {item.authors}(Author)</p>
-                                                        <ListGroup horizontal className='listBook'>
+                                                        <div class="secondCol">
+                                                            <b >{item.title}</b>
+                                                            <p id='container'> {item.authors}(Author)</p>
+                                                            </div>
+
+                                                        </div>
+
+                                                       
+                                                        {/* <p id='container'> {item.description}</p> */}
+                                                </Card>
+                                                <ListGroup horizontal className='listBook'>
                                                             <ListGroup.Item className='listItem' variant="info">  <a href={item.previewLink}> Preview</a></ListGroup.Item>
                                                             <ListGroup.Item className='listItem' variant="info">  <a href={item.buyLink}> Buy</a></ListGroup.Item>
                                                             <ListGroup.Item className='listItem' variant="info" onClick={() => this.addBookFavirote(item)}>  <a href={'#'}>Add</a> </ListGroup.Item>
+
                                                         </ListGroup>
-                                                        {/* <p id='container'> {item.description}</p> */}
-                                                    </div>
-                                                </Card>
+
+                                                </div>
+
                                             </Col>
-                                        
-
-                                    <AlertB showAlert={this.state.showAlert} />
 
 
+                                            <AlertB showAlert={this.state.showAlert} />
 
-                                </>
-
-
-
-                            )
+                                    
+                                        </>
 
 
-                        })
+
+                                    )
 
 
-                        }
-                        </Row>
-                                    </Container>
+                                })
+
+
+                                }
+                                
+                            </Row>
+                            
+                        </Container>
 
                     </div>
-                    
+
 
 
 
