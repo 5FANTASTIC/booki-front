@@ -121,13 +121,16 @@ class SelectBook extends React.Component {
 
                     <Form inline className='searchForm'>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(event) => this.researchBarContent(event)} />
-
-                        <IconContext.Provider onClick={() => this.renderCollection(this.state.researchBarValue)}
-                            value={{ color: "#917624bd", size: '50', className: "global-class-name" }}>
+<Button onClick={() => this.renderCollection(this.state.researchBarValue)}>
+                        <IconContext.Provider 
+                            value={{ color: "#917624bd", size: '50', className: "global-class-name" }}
+                            
+                            >
                             <div>
                                 <GiArchiveResearch />
                             </div>
                         </IconContext.Provider>
+                        </Button>
                         {/* <p onClick={() => this.renderCollection(this.state.researchBarValue)} ><GiArchiveResearch className='iconSearch' size={60} value={{ color: 'blue' }}></GiArchiveResearch></p> */}
                     </Form>
                 </div>
@@ -143,9 +146,6 @@ class SelectBook extends React.Component {
                         {this.state.dataHistory.map((item, idx) => {
                             return (
                                 <>
-
-
-
                                             <Col >
                                                 <Card className='mycard' key={this.idx} style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
                                                     <div>
