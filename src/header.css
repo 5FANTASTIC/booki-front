@@ -1,18 +1,19 @@
-a{
+/* a{
   color:#fff;
-}
+} */
 
-a:hover{
-  color: #917524;
-  font-size: 150%;
-}
 
 
 .NavBarPart{
+  color:#fff;
   margin-left: 2rem;
   font-size: 120%;
   font-family:  "Lucida Console", "Courier New", monospace;	
   text-decoration: none;
 }
 
+.NavBarPart:hover{
+  color: #917524;
+  font-size: 150%;
+}
 /* style={{textDecoration:'none'}} */

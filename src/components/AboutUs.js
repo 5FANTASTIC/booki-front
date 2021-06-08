@@ -10,8 +10,6 @@ import AboutUs1 from './AboutUs1.css'
 
 class AboutUs extends React.Component {
   render() {
-
-
     return (
       <>
         <body>
