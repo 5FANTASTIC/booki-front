@@ -28,7 +28,6 @@ class BookModal extends React.Component {
                 <Card.Body>
                   <Col>
                   <Card.Text className='modalCardText'>
-                  <Card.Img style={{ width: '9rem', height: '15rem' }} variant="top" src={this.props.modalCard.imageLinks} alt={this.props.modalCard.title} />
                     {this.props.modalCard.description}
                   </Card.Text>
                   </Col>
