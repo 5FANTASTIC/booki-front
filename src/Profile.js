@@ -32,7 +32,7 @@ const Profile = () => {
                 </Card.Text>
                 
                  <Card.Text style={{textAlign: 'justify' ,textIndent: '130px'}} >
-                  Nick Name: {user.nickname}
+                   User Name: {user.nickname}
                   </Card.Text>
                  
                  <br></br>
