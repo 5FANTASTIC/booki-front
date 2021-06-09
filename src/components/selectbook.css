@@ -1,84 +1,202 @@
-/* .mycard{
-    width:400px;
-    display:flex;
-    flex-direction:column;
-
-
-}
-#container {
-    overflow-y:hidden;
-    height: 200px;
-    padding: 20px;
-}
-.inner-card{
-    display:flex;
-    flex-direction:row;
-    width:400px
-
+@import url('https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap');
+.catGroup{
+    text-transform: uppercase;
+    font-size:15px;
+    margin-top: -24px;
 
 }
-.box{
-    display:flex;
-    flex-direction:column;
-    width:200px;
-} */
-#container {
-    overflow-y:hidden;
-    height: 50px;
-    padding: 5px;
-}
-.cardImg{
-    height:200px;
-    width:100%;
-}
-
-.CatList,.listItem{
-    width: 10em;
+.CatList{
+    width: 100%;
     color: #022e57;
     background-color: #917624c0;
     text-align: center;
     margin-bottom: 1.5em;
 }
-.CatList:hover,.listItem:hover{
+.CatList:hover{
     transform: scale(1.1);
     background-color: #917624e7;
     border-color: #022e57;
 }
-.global-class-name:hover{
-    transform: scale(1.3);
-}
+
 .searchForm{
     margin-bottom: 1.5em;
+    margin-left: 35em;
 }
-.iconSearch{
-size: 300px;
+.searchBackground{
+    /* background-color: #ccbcaf; */
+    padding-left: 15px;
+    padding-right: -1px;
+    border-radius: 10%;
+    box-shadow: 1px 1px 1px 0.05px #9176248a;
+}
+.searchBackground:hover{
+    transform: scale(1.01);
+}
+.searchButton {
+    background-color: rgba(255, 248, 220, 0);
+    border-color: rgba(255, 248, 220, 0);
+    margin-left: -61px;
+}
+.searchButton:hover{
+    background-color: rgba(255, 248, 220, 0);
+    border-color: rgba(255, 248, 220, 0);
 }
 
-.mycard:hover  {
-    font-size: 20px;
+.global-class-name:hover{
     transform: scale(1.1);
-    
-    }
-.mycard:hover > div {
-    background-color: #9176243f;
-    }
-    
-.listBook{
-    width: 18rem;
 }
-.listItem{
-    width: 6em;
+
+Button .searchButton:active{
+    background-color: rgba(95, 158, 160, 0);
+}
+.helpIcon{
+    margin-left: 30em;
+    margin-top: -10px;
+}
+.helpIcon:hover{
+    transform: scale(1.04);
+}
+.helpTool{
+    position: relative;
+  display: inline-block;
+}
+.helpTool .tooltiptext {
+    visibility: hidden;
+  width: 200px;
+  background-color: #9176248a;
+  opacity: 0.5;
+  color: #021220;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  right: 8%;
+  }
+  
+  .helpTool .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent #917624;
+  }
+  
+  .helpTool:hover .tooltiptext {
+    visibility: visible;
+  }
+/***********************CardPart*************************/
+.cardRow{
+    margin-left: 4em;
+}
+.cardButton{
+    font-family: 'Happy Monkey', cursive;
+    opacity: .95;
+
+    /***/
+    /* position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; */
+
+
+}
+.cardButton:hover  {
+    margin-top:-10px;
+    opacity: 1;
+}
+
+.mycard{
+
+}
+.firstRow{
+    display: flex;
+
+}
+.cardImg{
+    /* height:226px; */
+    height:190px;
+    width:40%;
+}
+.bookTitle{
+    /* text-align: left; */
+}
+.secondCol{
+    margin-right: 15px;
+    display: block;
     text-align: center;
+}
+.secondCol b{
+    margin: 15px auto;
+    text-transform: uppercase;
+    /*To limit the text*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+
+}
+#container{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.listBook{
+    width: 15rem;
+    margin-top: 0vh;
+        margin-bottom: 50px;
+
+}
+
+.listItem{
     margin-bottom: 0px;
+    width: 10em;
+    color: #022e57;
+    background-color: #917624c0;
+    text-align: center;
+}
+.listItem:hover{
+    background-color: #917624e7;
+    border-color: #022e57;
 }
 .listItem a{
     text-decoration: none;
     color: #022e57;
 }
-.renderBooks{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    align-content: center;
+.myShowIcon:hover span,.myShopIcon:hover span,.myHeartIcon:hover span {
+    display:none;
+
+}
+.myShowIcon:hover:before {
+    content:"View";
+}
+.myShopIcon:hover:before {
+    content:"Shop";
+}
+.myHeartIcon:hover:before {
+    content:"Fav";
+}
+.myShowIcon:hover,.myShopIcon:hover,.myHeartIcon:hover  {
+    width: 44.9px;
+    text-align:left;
+    color:cornsilk;  
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+    height:0px;
+
+}
+/*********************BookModal************************/
+.modalCardText{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }

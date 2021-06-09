@@ -31,7 +31,10 @@ class MyFavoriteBooks extends React.Component {
       showBookDetailModel:false,
       BookModelData:[],
       authorsBooksSuggestion:[],
+      showAutherbook:false,
       comment:'',
+      nameCat:'',
+      relatedBooks:[],
 
     }
 
@@ -65,11 +68,13 @@ class MyFavoriteBooks extends React.Component {
   showRemainDetails=(item,idx)=>{
     console.log(item)
     this.suggestAuthorsBooks(item);
+    this.suggestMoreRelatedBooks(item.publishedDate)
     console.log(this.state.authorsBooksSuggestion)
     this.setState({
       showBookDetailModel:true,
       BookModelData:item,
-      index:idx
+      index:idx,
+      nameCat:item.publishedDate,
       
       
     })
@@ -77,9 +82,23 @@ class MyFavoriteBooks extends React.Component {
     console.log(this.state.showBookDetailModel)
 
   }
+  // close the details munue once complete 
+  closeDetail=e=>{
+    this.setState({
+      showBookDetailModel:false,
+
+
+    })
+    console.log('afterclick',this.state.showBookDetailModel)
+  }
   // suggest more for auther 
 
   suggestAuthorsBooks=(item)=>{
+    if(item.authors !='NAN'){
+      this.setState({
+        showAutherbook:true,
+      })
+    }
     let authersList=item.authors.split(',')
     console.log(authersList)
     let category='Engineering'
@@ -101,10 +120,27 @@ class MyFavoriteBooks extends React.Component {
      this.setState({
       authorsBooksSuggestion:allAuthorsBooks
      })
-   }); 
-  
+   });   
 
-};
+ };
+ // suggest on same topic 
+  suggestMoreRelatedBooks = async (nameCat) => {
+    try {
+        let collectionsName = nameCat
+        let PORT = process.env.REACT_APP_PORT
+        let locally = 'http://localhost:3020'
+        console.log(collectionsName)
+        let URL = `${PORT}/collectionsBooks?collectionsName=+subject:${collectionsName}`
+        let data = await axios.get(URL);
+
+        this.setState({
+            relatedBooks: data.data[0].Books,
+        })
+        console.log(this.state.relatedBooks)
+    } catch {
+        console.log('I  have aproblem in suggestMoreRelatedBooks function ')
+    }
+ }
 
   // lab 013 functions forms+add Data to dataBase 
   // present the form 
@@ -126,29 +162,29 @@ class MyFavoriteBooks extends React.Component {
     })
   } 
 
-  addToDataBase = async (event) => {
-    event.preventDefault();
-    let email = this.props.auth0.user.email
-    let PORT = process.env.REACT_APP_PORT
-    let locally = 'http://localhost:3020'
-    let URL = `${PORT}/addBook`
+  // addToDataBase = async (event) => {
+  //   event.preventDefault();
+  //   let email = this.props.auth0.user.email
+  //   let PORT = process.env.REACT_APP_PORT
+  //   let locally = 'http://localhost:3020'
+  //   let URL = `${PORT}/addBook`
 
-    const formData = {
-      email: this.props.auth0.user.email,
-      imageURL: this.state.imageURL,
-      bookName: this.state.bookName,
-      description: this.state.description,
-    }
+  //   const formData = {
+  //     email: this.props.auth0.user.email,
+  //     imageURL: this.state.imageURL,
+  //     bookName: this.state.bookName,
+  //     description: this.state.description,
+  //   }
 
-    let x = await axios.post(URL, formData);
-    console.log(x)
-    this.setState({
-      bookData: x.data,
-      show: true,
-      showAddModel: false,
-    })
+  //   let x = await axios.post(URL, formData);
+  //   console.log(x)
+  //   this.setState({
+  //     bookData: x.data,
+  //     show: true,
+  //     showAddModel: false,
+  //   })
 
-  }
+  // }
 
   // onchange 
   ImageURL = e => {
@@ -253,91 +289,55 @@ class MyFavoriteBooks extends React.Component {
     // this.componentDidMount();
     
     return (
-      <>                 
-
-        <Jumbotron>
-          <h1> Favorite Books List</h1>
-          
-        </Jumbotron>
-{/*      
-        {/* <Button onClick={this.addform}> ADD BOOK </Button> */}
-        {/* <BookFormModal showAddModel={this.state.showAddModel} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} addToDataBase={this.addToDataBase} /> */}
-
-        {/* <UpdateBookForm updateFormShow={this.state.updateFormShow} bookName={this.BookName} Description={this.Description} ImageURL={this.ImageURL} updateOnDataBase={this.updateOnDataBase} valueDatas={this.state.valuesBeforeUpdateArray} /> */}
-
+      <>  
         <div class='books'>
-        {
-          ! this.state.showBookDetailModel &&
-          <>
+          {
+            ! this.state.showBookDetailModel &&
+            <>
 
-            <Table striped bordered hover variant="dark">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Book</th>
-                    <th>Title</th>
-                    <th>Authors</th>
-                    <th>Delete</th>
-                    <th>More Details</th>
-                    <th>Add Comment</th>
-                  </tr>
-                </thead>
-                <tbody>
-                { this.state.bookData.map((item,index)=>{
-                  return(
-                    <>
-                      <tr>
-                        <td>{index}</td>
-                        <td><a href={item.previewLink}><img  src={item.imageLinks != 'NAN' ? item.imageLinks : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg' } alt='Book'/> </a></td>
-                        <td>{item.title}</td>
-                        <td>{item.authors}</td>
-                        <td><Button variant="primary" onClick={() => this.remove(index)}>Delete</Button></td>
-                        <td><Button variant="primary" onClick={() => this.showRemainDetails(item,index)}>More Details</Button></td>
-                        <td class='notes'>{item.note}</td>
-                      </tr>
+              <Table striped bordered hover variant="dark" className='table'>
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Book</th>
+                      <th>Title</th>
+                      <th>Authors</th>
+                      <th>Delete</th>
+                      <th>Details</th>
+                      <th>My Comment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  { this.state.bookData.map((item,index)=>{
+                    return(
+                      <>
+                        <tr>
+                          <td>{index+1}</td>
+                          <td><a href={item.previewLink}><img  height='100' src={item.imageLinks != 'NAN' ? item.imageLinks : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg' } alt='Book'/> </a></td>
+                          <td>{item.title}</td>
+                          <td>{item.authors}</td>
+                          <td><Button className='buttonC' onClick={() => this.remove(index)}>Delete</Button></td>
+                          <td><Button className='buttonC' onClick={() => this.showRemainDetails(item,index)}>Details</Button></td>
+                          <td class='notes'>{item.note}</td>
+                        </tr>
 
-                    </>
+                      </>
 
-                  )
-                })}
-
+                    )
+                  })}
 
                   </tbody>
-            </Table>
-          </>
-        }
-
-
-
-                  {
-                    this.state.showBookDetailModel && 
-
-                    <BookDetails showBookDetailModel={this.state.showBookDetailModel} BookModelData={this.state.BookModelData} authorsBooksSuggestion={this.state.authorsBooksSuggestion} updateComment={this.updateComment} assignComment={this.assignComment}/>
-                   
-                  }
-
-
-          {/* {this.state.show &&
-
-          
-            this.state.bookData.map((item, idx) => {
-              return (
-                <>
-                  
-
-
-
-
-                </>
-
-
-
-              )
-
-
-            }) */}
+              </Table>
+            </>
           }
-        </div> */}
+          
+        </div> 
+        {
+            this.state.showBookDetailModel && 
+
+            <BookDetails showBookDetailModel={this.state.showBookDetailModel} BookModelData={this.state.BookModelData} showAutherbook={this.state.showAutherbook} authorsBooksSuggestion={this.state.authorsBooksSuggestion} updateComment={this.updateComment} assignComment={this.assignComment} closeDetail={this.closeDetail} relatedBooks={this.state.relatedBooks}/>
+            
+          }
 
 
       </>
