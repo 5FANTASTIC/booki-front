@@ -26,7 +26,7 @@ class SelectBook extends React.Component {
             researchBarValue: '',
             showAlert: false,
             show: false,
-            modalCard: {},
+            modalCard: [],
             showModal: false,
         }
     }
@@ -74,10 +74,15 @@ class SelectBook extends React.Component {
         }
     }
     displayModal = (item) => {
+
         this.setState({
             showModal: true,
             modalCard: item
         });
+    }
+    componentDidMount =  () => {
+        this.renderCollection('+subject:programming')
+        
     }
 
     addBookFavirote = async (item) => {
@@ -117,21 +122,18 @@ class SelectBook extends React.Component {
 
     }
     /// Alert messages
-    displayBookModal = () => {
-        this.state.dataHistory.map(item => {
-            this.displayModal({
-                title: item.title,
-                imageLinks: item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg',
-                description: item.description,
-            });
-        })
+    displayBookModal = (item) => {
+        this.setState({
+            showModal: true,
+            modalCard: item,
+
+        })       
     }
 
     render() {
         console.log(this.props.auth0)
         return (
             <>
-
 
                 <ListGroup horizontal className='catGroup'>
                     <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:history')} className='CatList'>History</ListGroup.Item>
@@ -182,7 +184,7 @@ class SelectBook extends React.Component {
                                             <Col>
                                                 <div class='cardButton'>
                                                     <Card className='mycard' key={this.idx} style={{ width: '16rem', height: '14.3rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}
-                                                        onClick={this.displayBookModal}>
+                                                        onClick={()=>this.displayBookModal(item)}>
                                                         <div class="firstRow">
                                                             <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
 
