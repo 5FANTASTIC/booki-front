@@ -42,10 +42,10 @@ class Footer extends React.Component {
           <div class="col-md-4 col-sm-6 col-xs-12">
             <ul class="social-icons">
 
-
+            
               <li><SocialIcon url="https://facebook.com/" /></li>
               <li><SocialIcon url="https://twitter.com/" /></li>
-              <li><SocialIcon url="https://github.com/" /></li>
+              <li> <SocialIcon  url="https://github.com/" /></li>
               <li><SocialIcon url="https://instagram.com/" /></li>
             </ul>
           </div>
@@ -56,7 +56,7 @@ class Footer extends React.Component {
           <div class="row">
             <div class="col-md-8 col-sm-6 col-xs-12">
 
-              <p class="copyright-text">&copy; 2021 All Rights Reserved by <b>Booki</b> 
+              <p style={{textAlign: 'justify' ,textIndent: '400px'}}class="copyright-text">&copy; 2021 All Rights Reserved by <b>Booki</b> 
            
             </p>
             </div>
