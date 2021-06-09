@@ -7,10 +7,17 @@ font-size: 20px;
     background-color: #9176243f;
     ;
   }
-  .cardAboutUs:hover{ transform: scale(1.1)}
-  /* * {
-     font-family:  "Lucida Console", "Courier New", monospace;	;
-      
 
-  }
- */
+.cardAboutUs:hover{ transform: scale(1.1)}
+
+ .AboutUsH3{
+
+   font-size: 100px; 
+   font-weight: bolder;
+   color: #917524;
+   margin-top: 15px;
+   margin-bottom:20px;
+   opacity:0.7;
+   text-shadow: 2px 4px #293b5f
+ 
+ }

@@ -15,6 +15,7 @@ class AboutUs extends React.Component {
         <body>
 
           <Container>
+             <center><h3 class='AboutUsH3'>Our Team </h3></center>                                                   
             <br></br>
             <br></br>
             <br></br>
