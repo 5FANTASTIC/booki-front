@@ -10,8 +10,8 @@ import { GiArchiveResearch } from "react-icons/gi";
 import { RiHeartAddLine } from "react-icons/ri";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BiShowAlt } from "react-icons/bi";
-
-
+import { IoIosHelpCircleOutline } from "react-icons/io";
+import BookModal from './BookModal'
 import axios from 'axios';
 
 
@@ -25,10 +25,17 @@ class SelectBook extends React.Component {
             showHistory: false,
             researchBarValue: '',
             showAlert: false,
-
+            show: false,
+            modalCard: {},
+            showModal: false,
         }
-
     }
+    onHide = () => {
+        this.setState({
+            showModal: false,
+        });
+    }
+
     researchBarContent = (event) => {
         event.preventDefault();
         //   console.log(event.target)
@@ -58,7 +65,7 @@ class SelectBook extends React.Component {
 
             this.setState({
                 dataHistory: data.data[0].Books,
-                showHistory: true
+                showHistory: true,
             })
         } catch {
             this.setState({
@@ -66,7 +73,12 @@ class SelectBook extends React.Component {
             })
         }
     }
-
+    displayModal = (item) => {
+        this.setState({
+            showModal: true,
+            modalCard: item
+        });
+    }
 
     addBookFavirote = async (item) => {
         let email = this.props.auth0.user.email
@@ -103,7 +115,15 @@ class SelectBook extends React.Component {
 
     }
     /// Alert messages
-
+    displayBookModal = () => {
+        this.state.dataHistory.map(item => {
+            this.displayModal({
+                title: item.title,
+                imageLinks: item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg',
+                description: item.description,
+            });
+        })
+    }
 
     render() {
         console.log(this.props.auth0)
@@ -120,66 +140,82 @@ class SelectBook extends React.Component {
                     <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Literature')} className='CatList'>Literature</ListGroup.Item>
                     <ListGroup.Item variant="info" onClick={() => this.renderCollection('+subject:Science')} className='CatList'>Science</ListGroup.Item>
                 </ListGroup>
-
                 <Form inline className='searchForm'>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={(event) => this.researchBarContent(event)} />
-                    <Button className='searchButton' onClick={() => this.renderCollection(this.state.researchBarValue)}>
-                        <IconContext.Provider
-                            value={{ color: "#917624bd", size: '50', className: "global-class-name" }}
+                    <div class='searchBackground'>
+                        <FormControl type="text" placeholder="Search" className="mr-sm" onChange={(event) => this.researchBarContent(event)} />
+                        <Button variant="light" className='searchButton' onClick={() => this.renderCollection(this.state.researchBarValue)}>
+                            <IconContext.Provider
+                                value={{ color: "#917624bd", size: '50', className: "global-class-name" }} >
+                                <div>
+                                    <GiArchiveResearch />
+                                </div>
+                            </IconContext.Provider>
+                        </Button>
+                    </div>
+                    <IconContext.Provider
+                        value={{ color: "#917624bd", size: '40', className: "helpIcon" }}
+                    >
+                        <div class='helpTool'>
+                            < IoIosHelpCircleOutline />
+                            <span class="tooltiptext">Click On Book, For Details</span>
+                        </div>
 
-                        >
-                            <div>
-                                <GiArchiveResearch />
-                            </div>
-                        </IconContext.Provider>
-                    </Button>
+                    </IconContext.Provider>
                 </Form>
+
                 {  this.state.showHistory &&
 
                     <div>
+
 
                         <Container>
                             <br />
                             <br />
                             <br />
-                            <Row >
+                            <Row className= 'cardRow'>
+
                                 {this.state.dataHistory.map((item, idx) => {
                                     return (
                                         <>
                                             <Col>
                                                 <div class='cardButton'>
-                                                    <Card className='mycard' key={this.idx} style={{ width: '16rem', height: '14.3rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
+                                                    <Card className='mycard' key={this.idx} style={{ width: '16rem', height: '14.3rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}
+                                                        onClick={this.displayBookModal}>
                                                         <div class="firstRow">
                                                             <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
+
                                                             <div class="secondCol">
                                                                 <b >{item.title}</b>
                                                                 <p id='container'> {item.authors} (Author)</p>
                                                             </div>
 
                                                         </div>
-
-
                                                         {/* <p id='container'> {item.description}</p> */}
+
                                                     </Card>
                                                     <ListGroup horizontal className='listBook'>
                                                         <ListGroup.Item className='listItem' variant="info">
-                                                            <a href={item.previewLink}>
+                                                            <a target='_blank' href={item.previewLink}>
                                                                 <IconContext.Provider
                                                                     value={{ color: "#917624bd", size: '44.9', className: "cardItems" }}
 
                                                                 >
-                                                                    <div>
-                                                                        <BiShowAlt />
+                                                                    <div class='myShowIcon'>
+                                                                        <span>
+                                                                            <BiShowAlt />
+                                                                        </span>
                                                                     </div>
                                                                 </IconContext.Provider></a>
                                                         </ListGroup.Item>
-                                                        <ListGroup.Item className='listItem' variant="info">  <a href={item.buyLink}>
+                                                        <ListGroup.Item className='listItem' variant="info">  <a target='_blank' href={item.buyLink}>
                                                             <IconContext.Provider
                                                                 value={{ color: "#917624bd", size: '44.9', className: "cardItems" }}
 
                                                             >
-                                                                <div>
-                                                                    <AiOutlineShoppingCart />
+                                                                <div class='myShopIcon'>
+                                                                    <span>
+                                                                        <AiOutlineShoppingCart />
+                                                                    </span>
                                                                 </div>
                                                             </IconContext.Provider>
                                                         </a></ListGroup.Item>
@@ -187,8 +223,10 @@ class SelectBook extends React.Component {
                                                             value={{ color: "#917624bd", size: '44.9', className: "cardItems" }}
 
                                                         >
-                                                            <div>
-                                                                <RiHeartAddLine />
+                                                            <div class='myHeartIcon'>
+                                                                <span>
+                                                                    <RiHeartAddLine />
+                                                                </span>
                                                             </div>
                                                         </IconContext.Provider></a> </ListGroup.Item>
 
@@ -201,6 +239,7 @@ class SelectBook extends React.Component {
 
                                             <AlertB showAlert={this.state.showAlert} />
 
+                                            <BookModal show={this.state.showModal} onHide={this.onHide} modalCard={this.state.modalCard} />
 
                                         </>
 
