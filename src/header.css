@@ -1,19 +1,20 @@
-/* a{
-  color:#fff;
-} */
-
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@100&family=Oswald:wght@300&family=Poiret+One&display=swap');
 
 
 .NavBarPart{
   color:#fff;
   margin-left: 2rem;
-  font-size: 120%;
-  font-family:  "Lucida Console", "Courier New", monospace;	
+  /* font-size: 120%; */
+  font-size: 25px;
+
+  /* font-family:  "Lucida Console", "Courier New", monospace;	 */
   text-decoration: none;
+  font-family: 'Poiret One', cursive;
+
 }
 
-.NavBarPart:hover{
+.NavBarPart:hover,.homeItem{
   color: #917524;
-  font-size: 150%;
+  font-size: 25.5px;
 }
 /* style={{textDecoration:'none'}} */

@@ -19,7 +19,9 @@ const Profile = () => {
       <body>
 
         <center>
-
+<br/>
+<br/>
+<br/>
           <Card style={{ width: '38rem', backgroundColor: '#022e57', color: '#fff',fontFamily:'serif', fontSize: "17px" }}>
             <Card.Header  style={{ backgroundColor: '#917524'}}>Profile Information</Card.Header>
             <Card.Body>
@@ -32,7 +34,7 @@ const Profile = () => {
                 </Card.Text>
                 
                  <Card.Text style={{textAlign: 'justify' ,textIndent: '130px'}} >
-                   User Name: {user.nickname}
+                   UserName: {user.nickname}
                   </Card.Text>
                  
                  <br></br>

@@ -43,10 +43,10 @@ class Footer extends React.Component {
             <ul class="social-icons">
 
             
-              <li><SocialIcon url="https://facebook.com/" /></li>
-              <li><SocialIcon url="https://twitter.com/" /></li>
-              <li> <SocialIcon  url="https://github.com/" /></li>
-              <li><SocialIcon url="https://instagram.com/" /></li>
+              <li><SocialIcon url="https://facebook.com/" target="_blank" /></li>
+              <li><SocialIcon url="https://twitter.com/" target="_blank" /></li>
+              <li> <SocialIcon  url="https://github.com/" target="_blank"/></li>
+              <li><SocialIcon url="https://instagram.com/" target="_blank"/></li>
             </ul>
           </div>
 

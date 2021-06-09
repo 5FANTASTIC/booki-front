@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+*{
+    font-family: 'Roboto Condensed', sans-serif;
+}
 .bookde{
     width:100%
 }
-.container{
+.container1{
     display:flex;
     width:100%
     
@@ -21,7 +25,8 @@
     width: 65%;
     height:auto;
     padding: 0;
-    margin:0;
+    margin-left: 3em;
+    /* margin:0; */
     border: 3px solid #02192d;
     border-radius: 5px;
     background-color:white;
@@ -74,5 +79,23 @@
 
 
 }
+.marginTop, tr td{
+    /* padding-top: 20px;
+    padding-top: 20px; */
+    line-height: 7em;
+}
 
+tr:hover{
+    background-color: #02192d70;
+}
+td:hover{
+    background-color: #796c428e;
+}
+table
+{
+    box-shadow: 20px 20px 18px #888888;
 
+}
+.listDetailBook{
+    width:17rem;
+}

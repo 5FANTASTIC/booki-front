@@ -8,6 +8,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { FcAddressBook, FcOk, FcFinePrint } from "react-icons/fc";
+import { FileX } from 'react-bootstrap-icons';
 
 
 class FirstPage extends React.Component {
@@ -93,23 +94,20 @@ class FirstPage extends React.Component {
               </Carousel>
 
             </div>
-
             <br></br><br></br><br></br><br></br><br></br><br></br>
-            <div class="PartAboutus">
-
-              <Jumbotron fluid >
-                <center>
+            <div class="PartAboutus" style={{marginLeft:'7em' }} >
+              <Jumbotron fluid style={{}} >
                   <Container>
 
                     <Row>
                       <Col>
                         <h1 style={{ color: '#917524', textAlign: 'center', textShadow: '2px 4px #293b5f', marginTop: '-1em' }}>BOOKI</h1>
-                        <h2 style={{ color: '#917524', textAlign: 'center', fontFamily: 'serif', fontSize: '17px' }}> A book is like a garden, carried in the pocket</h2>
-                        <p style={{ color: '#293b5f', textAlign: 'justify', fontSize: '20px', textIndent: '20px', lineHeight: '1.4', letterSpacing: '0.2px', fontFamily: 'serif', margin: '1em 3em' }}>
+                        <h2 style={{  fontWeight:'bold',color: '#917524', textAlign: 'center', fontSize: '21px' }}> A book is like a garden, carried in the pocket</h2> 
+                        <p style={{  color: '#293b5f', textAlign: 'justify', fontSize: '20px', textIndent: '20px', lineHeight: '1.4', margin: '1em 3em' }}>
                           A book is a medium for recording information in the form of writing or images.
                           But with the advancement of technology, reading on paper has become less and less common and a new term has entered our lives, which is electronic book EBook, is a book publication made available in digital form, consisting of text, images, or both, readable on the flat-panel display of computers or other electronic devices.
-                        <br />Our website is your library to search about any book you need from any category, you can have your own ebooks and read them any time you need using your account.
-                        So, don't forget joining us, you are very welcome.
+                          <br /><br />Our website is your library to search about any book you need from any category, you can have your own ebooks and read them any time you need using your account.
+                          <br /><br/>So, don't forget joining us, you are very welcome.
                       </p>
                       </Col>
                       {/* https://img.pngio.com/open-old-book-transparent-png-stickpng-books-no-background-2650_1987.png */}
@@ -119,8 +117,8 @@ class FirstPage extends React.Component {
                       </Col>
                     </Row>
                   </Container>
-                </center>
               </Jumbotron>
+
 
             </div>
             <br></br><br></br><br></br><br></br><br></br><br></br>

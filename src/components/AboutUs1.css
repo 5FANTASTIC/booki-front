@@ -1,11 +1,13 @@
+.cardAboutUs{
+  height: 560px;
+}
 .cardAboutUs:hover  {
 font-size: 20px;
 
 }
-
 .cardAboutUs:hover > div {
     background-color: #9176243f;
-    ;
+  
   }
 
 .cardAboutUs:hover{ transform: scale(1.1)}
