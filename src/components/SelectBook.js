@@ -80,9 +80,9 @@ class SelectBook extends React.Component {
             modalCard: item
         });
     }
-    componentDidMount =  () => {
+    componentDidMount = () => {
         this.renderCollection('+subject:programming')
-        
+
     }
 
     addBookFavirote = async (item) => {
@@ -103,7 +103,7 @@ class SelectBook extends React.Component {
             imageLinks: item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'NAN',
             previewLink: item.previewLink != undefined ? item.previewLink : 'NAN',
             buyLink: item.buyLink != undefined ? item.buyLink : 'NAN',
-            category:item.categories != undefined ? item.categories[0] : 'NAN',
+            category: item.categories != undefined ? item.categories[0] : 'NAN',
 
         }
         console.log(formData)
@@ -127,7 +127,7 @@ class SelectBook extends React.Component {
             showModal: true,
             modalCard: item,
 
-        })       
+        })
     }
 
     render() {
@@ -176,15 +176,15 @@ class SelectBook extends React.Component {
                             <br />
                             <br />
                             <br />
-                            <Row className= 'cardRow'>
+                            <Row className='cardRow'>
 
                                 {this.state.dataHistory.map((item, idx) => {
                                     return (
                                         <>
                                             <Col>
                                                 <div class='cardButton'>
-                                                    <Card className='mycard' key={this.idx} style={{ width: '16rem', height: '14.3rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}
-                                                        onClick={()=>this.displayBookModal(item)}>
+                                                    <Card className='booksPageCard' key={this.idx} style={{ width: '16rem', height: '14.3rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}
+                                                        onClick={() => this.displayBookModal(item)}>
                                                         <div class="firstRow">
                                                             <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
 

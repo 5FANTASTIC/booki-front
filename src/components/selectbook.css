@@ -46,7 +46,7 @@
     transform: scale(1.1);
 }
 
-Button .searchButton:active{
+ .searchButton:active{
     background-color: rgba(95, 158, 160, 0);
 }
 .helpIcon{
@@ -93,31 +93,20 @@ Button .searchButton:active{
 .cardRow{
     margin-left: 4em;
 }
-.cardButton{
+.booksPageCard{
     font-family: 'Happy Monkey', cursive;
     opacity: .95;
-
-    /***/
-    /* position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; */
-
-
 }
 .cardButton:hover  {
     margin-top:-10px;
     opacity: 1;
 }
 
-.mycard{
-
-}
 .firstRow{
     display: flex;
 
 }
 .cardImg{
-    /* height:226px; */
     height:190px;
     width:40%;
 }
@@ -148,9 +137,9 @@ Button .searchButton:active{
     -webkit-box-orient: vertical;
 }
 .listBook{
-    width: 15rem;
+    width: 14.8rem;
     margin-top: 0vh;
-        margin-bottom: 50px;
+    margin-bottom: 50px;
 
 }
 
@@ -193,10 +182,24 @@ Button .searchButton:active{
 
 }
 /*********************BookModal************************/
+.bookModal{
+    color: #022e57;
+}
 .modalCardText{
-    overflow: hidden;
+    overflow: auto;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 10; /* number of lines to show */
+    -webkit-line-clamp: 16; /* number of lines to show */
     -webkit-box-orient: vertical;
+    text-align: justify;
+    padding-right: 20px;
+}
+.bookButton{
+    background-color: #917624e7;
+}
+.bookTitle{
+    margin-left: 5.5em;
+    font-weight: bolder;
+    text-transform:uppercase; 
+    color:#917624e7;
 }

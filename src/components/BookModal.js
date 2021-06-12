@@ -17,9 +17,9 @@ class BookModal extends React.Component {
   }
   render() {
     return (
-      <Modal show={this.props.show} onHide={this.onHide} animation={true}>
+      <Modal className='bookModal'show={this.props.show} onHide={this.onHide} animation={true}>
         <ModalHeader closeButton>
-          <ModalTitle>{this.props.modalCard.title}</ModalTitle>
+          <ModalTitle class='bookTitle'>{this.props.modalCard.title}</ModalTitle>
         </ModalHeader>
         <ModalBody>
           <Container>
@@ -37,7 +37,7 @@ class BookModal extends React.Component {
             </Container>
         </ModalBody>
             <ModalFooter>
-              <Button variant="secondary" onClick={this.onHide}>
+              <Button className='bookButton' variant="info" onClick={this.onHide}>
                 Close
               </Button>
             </ModalFooter>

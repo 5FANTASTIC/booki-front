@@ -23,7 +23,7 @@
   height: auto;
   text-align:center;
   color:black;
-  font-family: serif;
+  /* font-family: serif; */
   
 
 
@@ -40,11 +40,7 @@
   font-weight:medium;
 
 }
-.buttonC{
-  background-color: #02192d;
 
-
-}
 
 td{
 
@@ -52,3 +48,20 @@ td{
 
 
 }
+/***********************Trash Icon****************************/
+.buttonTrash,.buttonDetails{
+  background-color: rgba(255, 248, 220, 0);
+  border-color: rgba(255, 248, 220, 0);
+}
+.buttonTrash:hover,.buttonDetails:hover{
+  background-color: rgba(255, 248, 220, 0);
+  border-color: rgba(255, 248, 220, 0);
+}
+
+.trashIcon:hover,.detailsIcon:hover{
+  transform: scale(1.1);
+}
+
+/* Button .buttonTrash:active{
+  background-color: rgba(95, 158, 160, 0);
+} */

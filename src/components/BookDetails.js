@@ -6,25 +6,25 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel';
 import { Card, ListGroup } from 'react-bootstrap';
-import {Row, Col,Container } from 'react-bootstrap';
-import BookSelectedCSS  from './BookDetails.css';
+import { Row, Col, Container } from 'react-bootstrap';
+import BookSelectedCSS from './BookDetails.css';
 
 class BookDetails extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
-        this.state={
-            showDetail:this.props.showBookDetailModel,
-            handleClose:false
+        this.state = {
+            showDetail: this.props.showBookDetailModel,
+            handleClose: false
 
         }
     }
-    handleClose=()=>{
+    handleClose = () => {
         this.serState({
-            handleClose:true
+            handleClose: true
 
         })
     }
-    
+
     addBookFavirote = async (item) => {
         let email = this.props.auth0.user.email
         let PORT = process.env.REACT_APP_PORT
@@ -60,160 +60,168 @@ class BookDetails extends React.Component {
 
     }
 
-    render(){
+    render() {
         console.log(this.props.showBookDetailModel)
         console.log(this.state.showDetail)
         console.log(this.props.authorsBooksSuggestion)
-        return(
+        return (
             <>
-            { this.props.showBookDetailModel && 
-                
-                <>
-                 
-                 <div class='container'>
+                { this.props.showBookDetailModel &&
 
-                   <div class='detials' >
-                        <Modal.Header >
-                            <img src={this.props.BookModelData.imageLinks }/>
-                            <Form onSubmit={e=>  this.props.updateComment(e)}>
-                                
-                            <textarea className="form-control"  id="exampleFormControlTextarea1"  rows="5" cols='70' onChange={e=> this.props.assignComment(e)}>{this.props.BookModelData.note}</textarea>
-                            <Button className='buttonC' type="submit"  >  Save   </Button>
+                    <>
 
-                            </Form>
-                        </Modal.Header>
-                        
+                        <div class='container1'>
 
-                        <Modal.Body className='unit'>
-                        <span class='boltFont'>Title: </span> {this.props.BookModelData.title}
-                        </Modal.Body>
-                        <Modal.Body className='unit'>
-                       <span class='boltFont'> Authors: </span> {this.props.BookModelData.authors}
-                        </Modal.Body>
-                        <Modal.Body className='unit'>
-                       <span class='boltFont'> Publisher: </span>  {this.props.BookModelData.publisher}
-                        </Modal.Body>
-                        <Modal.Body className='unit'>
-                        <span class='boltFont'> Category: </span> {this.props.BookModelData.publishedDate}
-                        </Modal.Body>
-                        <Modal.Body className='unit'>
-                        <span class='boltFont'> Description: </span> {this.props.BookModelData.description}
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button className='buttonC' ><a href={this.props.BookModelData.previewLink}>Preview</a> </Button>
-                            <Button className='buttonC' ><a href={this.props.BookModelData.buyLink}>Buy </a> </Button>
-                            <Button className='buttonC' onClick={()=> this.props.closeDetail()}>Back </Button>
-                        </Modal.Footer>
-                        
-                    </div>
-                    <div class='conatiner2'>
+                            <div class='detials' >
+                                <Modal.Header >
+                                    <img src={this.props.BookModelData.imageLinks} />
+                                    <Form onSubmit={e => this.props.updateComment(e)}>
+
+                                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="5" cols='70' onChange={e => this.props.assignComment(e)}>{this.props.BookModelData.note}</textarea>
+                                        <Button className='buttonC' type="submit"  >  Save   </Button>
+
+                                    </Form>
+                                </Modal.Header>
 
 
-                {this.props.showAutherbook &&
-                <>
-                <h3> other Authors works</h3>
-                    
-                    <Carousel className='Carousel' >
-                        {
-                            this.props.authorsBooksSuggestion.map(item=>{
+                                <Modal.Body className='unit'>
+                                    <span class='boltFont'>Title: </span> {this.props.BookModelData.title}
+                                </Modal.Body>
+                                <Modal.Body className='unit'>
+                                    <span class='boltFont'> Authors: </span> {this.props.BookModelData.authors}
+                                </Modal.Body>
+                                <Modal.Body className='unit'>
+                                    <span class='boltFont'> Publisher: </span>  {this.props.BookModelData.publisher}
+                                </Modal.Body>
+                                <Modal.Body className='unit'>
+                                    <span class='boltFont'> Category: </span> {this.props.BookModelData.publishedDate}
+                                </Modal.Body>
+                                <Modal.Body className='unit'>
+                                    <span class='boltFont'> Description: </span> {this.props.BookModelData.description}
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button className='buttonC' ><a href={this.props.BookModelData.previewLink}>Preview</a> </Button>
+                                    <Button className='buttonC' ><a href={this.props.BookModelData.buyLink}>Buy </a> </Button>
+                                    <Button className='buttonC' onClick={() => this.props.closeDetail()}>Back </Button>
+                                </Modal.Footer>
 
-                                return(
-                                 
-                                    
-                                    <Carousel.Item className='carouselItems'>
-
-                                            <Col >
-                                                <Card className='mycard' key={this.idx} style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
-                                                    <div>
-                                                        <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
-                                                        <h4><center>{item.title}</center></h4>
-                                                        <p id='container'> {item.authors}(Author)</p>
-                                                        <ListGroup horizontal className='listBook'>
-                                                            <ListGroup.Item className='listItem' variant="info">  <a href={item.previewLink}> Preview</a></ListGroup.Item>
-                                                            <ListGroup.Item className='listItem' variant="info">  <a href={item.buyLink}> Buy</a></ListGroup.Item>
-                                                            <ListGroup.Item className='listItem' variant="info" onClick={() => this.addBookFavirote(item)}>  <a href={'#'}>Add</a> </ListGroup.Item>
-                                                        </ListGroup>
-                                                        {/* <p id='container'> {item.description}</p> */}
-                                                    </div>
-                                                </Card>
-                                            </Col>
-                                        
-                                       
-                                        
-                                    </Carousel.Item>
-                                    
-
-                                        
-                                    
-
-                                )
-                            }
+                            </div>
+                            <div class='conatiner2'>
 
 
-                            )
-                        }
-                        </Carousel> 
-                </>
+                                {this.props.showAutherbook &&
+                                    <>
+                                        <h3> Author's other works</h3>
+
+                                        <Carousel className='Carousel' >
+                                            {
+                                                this.props.authorsBooksSuggestion.map(item => {
+
+                                                    return (
+
+
+                                                        <Carousel.Item className='carouselItems'>
+
+                                                            <Col >
+                                                                <Card className='moreBooksCard' key={this.idx} style={{ height: '21em', width: '17rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
+                                                                    <div><center>
+                                                                        <Card.Img style={{marginBottom:'1em'}} class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
+                                                                    </center>
+                                                                        <h4><center>{item.title}</center></h4>
+                                                                        <p id='container'> {item.authors}(Author)</p>
+                                                                        
+                                                                        {/* <p id='container'> {item.description}</p> */}
+                                                                    </div>
+                                                                </Card>
+                                                                <ListGroup horizontal className='listDetailBook'>
+                                                                            <ListGroup.Item className='listItem' variant="info">  <a href={item.previewLink}> Preview</a></ListGroup.Item>
+                                                                            <ListGroup.Item className='listItem' variant="info">  <a href={item.buyLink}> Buy</a></ListGroup.Item>
+                                                                            <ListGroup.Item className='listItem' variant="info" onClick={() => this.addBookFavirote(item)}>  <a href={'#'}>Add</a> </ListGroup.Item>
+                                                                        </ListGroup>
+                                                            </Col>
+
+
+
+                                                        </Carousel.Item>
+
+
+
+
+
+                                                    )
+                                                }
+
+
+                                                )
+                                            }
+                                        </Carousel>
+                                        <br />
+                                        <br />
+                                    </>
+                                }
+                                <h3> Related Books</h3>
+
+                                <Carousel className='Carousel'>
+                                    {
+                                        this.props.relatedBooks.map(item => {
+
+                                            return (
+
+
+                                                <Carousel.Item className='carouselItems'>
+
+                                                    <Col >
+                                                        <Card className='moreBooksCard' key={this.idx} style={{ height: '21em', width: '17rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
+                                                            <div>
+                                                                <center>
+                                                                    <Card.Img style={{marginBottom:'1em'}}class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
+                                                                </center>
+                                                                <h4><center>{item.title}</center></h4>
+                                                                <p id='container'> {item.authors}(Author)</p>
+                                                               
+                                                                {/* <p id='container'> {item.description}</p> */}
+                                                            </div>
+                                                           
+                                                        </Card>
+                                                        <ListGroup horizontal className='listDetailBook'>
+                                                                    <ListGroup.Item className='listItem' variant="info">  <a href={item.previewLink}> Preview</a></ListGroup.Item>
+                                                                    <ListGroup.Item className='listItem' variant="info">  <a href={item.buyLink}> Buy</a></ListGroup.Item>
+                                                                    <ListGroup.Item className='listItem' variant="info" onClick={() => this.addBookFavirote(item)}>  <a href={'#'}>Add</a> </ListGroup.Item>
+                                                                </ListGroup>
+                                                    </Col>
+
+
+
+                                                </Carousel.Item>
+
+
+
+
+
+                                            )
+                                        }
+
+
+                                        )
+                                    }
+                                </Carousel>
+                            </div>
+
+
+
+                        </div>
+
+                        <br />
+                        <br />
+
+
+                    </>
                 }
-                <h3> Related Books</h3>
-                    
-                    <Carousel  className='Carousel'>
-                        {
-                            this.props.relatedBooks.map(item=>{
-
-                                return(
-                                 
-                                    
-                                    <Carousel.Item className='carouselItems'>
-
-                                            <Col >
-                                                <Card className='mycard' key={this.idx} style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
-                                                    <div>
-                                                        <Card.Img class='cardImg' variant="top" src={item.imageLinks != undefined ? item.imageLinks.smallThumbnail : 'https://breastfeedinglaw.com/wp-content/uploads/2020/06/book.jpeg'} />
-                                                        <h4><center>{item.title}</center></h4>
-                                                        <p id='container'> {item.authors}(Author)</p>
-                                                        <ListGroup horizontal className='listBook'>
-                                                            <ListGroup.Item className='listItem' variant="info">  <a href={item.previewLink}> Preview</a></ListGroup.Item>
-                                                            <ListGroup.Item className='listItem' variant="info">  <a href={item.buyLink}> Buy</a></ListGroup.Item>
-                                                            <ListGroup.Item className='listItem' variant="info" onClick={() => this.addBookFavirote(item)}>  <a href={'#'}>Add</a> </ListGroup.Item>
-                                                        </ListGroup>
-                                                        {/* <p id='container'> {item.description}</p> */}
-                                                    </div>
-                                                </Card>
-                                            </Col>
-                                        
-                                       
-                                        
-                                    </Carousel.Item>
-                                    
-
-                                        
-                                    
-
-                                )
-                            }
-
-
-                            )
-                        }
-                        </Carousel> 
-                    </div>
-                    
-                   
-                    
-                    </div>
-                  
-                    
-
-
-    
-                </>
-            }
             </>
 
         )
     }
-    
+
 
 
 }

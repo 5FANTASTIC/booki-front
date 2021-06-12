@@ -19,7 +19,7 @@ class AboutUs extends React.Component {
             <br></br>
             <br></br>
             <br></br>
-            <Row>
+            <Row style={{marginLeft:'1.5em' }}>
               <Col xs={4}>
                 <Card className='cardAboutUs' style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 5px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
                   {/* <Card.Img variant="top" src="https://avatars.githubusercontent.com/u/80678655?v=4"  rounded/> */}
@@ -77,7 +77,7 @@ class AboutUs extends React.Component {
             <br></br>
             <br></br>
             <br></br>
-            <Row>
+            <Row style={{marginLeft:'1.5em' }}>
               <Col xs={4}>
                 <Card className='cardAboutUs' style={{ width: '18rem', background: 'linear-gradient(#D9C68F, #5C6087)', boxShadow: '0 4px 8px 0 #6D77CF, 0 6px 20px 0 #6D77CF' }}>
                   {/* <Card.Img variant="top" src="https://avatars.githubusercontent.com/u/64347254?v=4" /> */}
